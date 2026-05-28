@@ -309,7 +309,7 @@ export default function MenuApp() {
           <div className="flex items-start justify-between mb-4 animate-fade-in">
             <div>
               <p className="text-sm text-purple-600 font-medium">{greeting},</p>
-              <h1 className="text-3xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">Pool Café</h1>
+              <h1 className="text-3xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">from Pool Restaurant</h1>
               <p className="text-xs text-purple-500 mt-1">{currentDate}</p>
             </div>
             <button
