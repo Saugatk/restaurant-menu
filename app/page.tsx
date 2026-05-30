@@ -1,7 +1,323 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Search, Download, Smartphone } from 'lucide-react'
+import Image from 'next/image'
+import {
+  Apple,
+  Banana,
+  Beef,
+  Bean,
+  Beer,
+  CakeSlice,
+  Candy,
+  Carrot,
+  ChefHat,
+  Cherry,
+  Coffee,
+  CookingPot,
+  Cookie,
+  CupSoda,
+  Donut,
+  Download,
+  Drumstick,
+  EggFried,
+  Fish,
+  Flame,
+  GlassWater,
+  Ham,
+  Heart,
+  IceCreamBowl,
+  Leaf,
+  Martini,
+  Milk,
+  Pizza,
+  Popcorn,
+  Salad,
+  Sandwich,
+  Search,
+  Smartphone,
+  Soup,
+  Star,
+  Utensils,
+  UtensilsCrossed,
+  Vegan,
+  Wheat,
+  Wine,
+} from 'lucide-react'
+
+const imageFiles = [
+  ' mushroom chilly.jpg',
+  'Buff Chicken Fried Rice.jpg',
+  'Buff Khaja Set.jpg',
+  'Chicken Chilly.jpg',
+  'Fried Buff Momo.jpg',
+  'Fruit Salad small plate.jpg',
+  'aalu fry.jpg',
+  'aalu sadeko.jpg',
+  'banana lassi.jpg',
+  'bhatmas sadeko.jpg',
+  'black coffee.jpg',
+  'black tea.jpg',
+  'boiled egg.jpg',
+  'buff kathi roll.jpg',
+  'buff khote momo.jpg',
+  'buff meatballs.jpg',
+  'buff momo.jpg',
+  'buff pizza.jpg',
+  'buff pizza.jpeg',
+  'buff sekuwa.jpg',
+  'buff steam momo.jpg',
+  'buff_momo.jpg',
+  'chciken-sadeko.jpg',
+  'cheese pizza.jpg',
+  'chichken sekuwa.jpg',
+  'chichken thukpa.jpg',
+  'chicken boil.jpg',
+  'chicken burger.jpg',
+  'chicken choila.jpg',
+  'chicken chowmin.jpg',
+  'chicken chowmin.jpeg',
+  'chicken drumstick(6 pcs).jpg',
+  'chicken fried rice.jpg',
+  'chicken kathi roll.jpg',
+  'chicken khaja set.jpg',
+  'chicken khote momo.jpg',
+  'chicken leg piece fry(2 pcs).jpg',
+  'chicken pizza.jpg',
+  'chicken roast.jpg',
+  'chicken sadeko.jpg',
+  'chicken sausage .jpg',
+  'chicken soup.jpg',
+  'chicken taas.jpg',
+  'chicken thakali khana.jpg',
+  'chicken.jpg',
+  'chilly momo.jpg',
+  'chinese fried rice.jpg',
+  'coke_fanta_dew_sprite.jpg',
+  'cold coffee.jpg',
+  'dry fruit lassi.jpg',
+  'egg biryani.jpg',
+  'egg fried rice.jpg',
+  'egg kathi roll.jpg',
+  'french fry.jpg',
+  'fruit salad large plate.jpeg',
+  'fry omelette.jpg',
+  'fry veg momo.jpg',
+  'green salad large plate.jpeg',
+  'green salad.jpg',
+  'kaju fry.jpg',
+  'lemon soda.jpg',
+  'lemon tea.jpg',
+  'mango juice.jpg',
+  'mango lassi.jpg',
+  'masala omlet.jpg',
+  'milk tea.jpg',
+  'min.water.jpg',
+  'mix chowmin.jpg',
+  'mixed pizza.jpg',
+  'mixed thukpa.jpg',
+  'mushroom pakoda.jpg',
+  'mushroom pizza.jpg',
+  'mushroom sadeko.jpg',
+  'mushroom soup.jpg',
+  'mutton biryani.jpg',
+  'mutton chilly.jpg',
+  'mutton grevy.jpg',
+  'mutton khaja set.jpg',
+  'mutton khana set.jpg',
+  'mutton khana thali set.jpg',
+  'mutton sadeko.jpg',
+  'mutton sekuwa.jpg',
+  'mutton soup.jpg',
+  'mutton taas.jpg',
+  'mutton thukpa.jpg',
+  'orange juice.jpg',
+  'paneer kathi roll.jpg',
+  'paneer pakauda.jpg',
+  'papad(fry,dry,masala).jpg',
+  'peanut sadeko.jpg',
+  'peanuts sadeko.jpg',
+  'php9S4dVoAM.webp',
+  'plain lassi.jpg',
+  'plain omlet.webp',
+  'pork boil.jpg',
+  'pork chilly.jpg',
+  'pork choila.jpg',
+  'pork fry.jpg',
+  'pork sadeko.jpg',
+  'pork tawa.jpg',
+  'potato chilly.jpg',
+  'pouch egg.jpg',
+  'russian salad large plate.jpg',
+  'russian salad small plate.jpg',
+  'soda water.jpg',
+  'sweet lassi.jpg',
+  'veg biryani.jpg',
+  'veg burger.jpg',
+  'veg chowmin.jpg',
+  'veg chowmin.webp',
+  'veg fried rice.jpg',
+  'veg kathi roll.jpg',
+  'veg khaja set.jpg',
+  'veg momo.jpg',
+  'veg pakauda.jpg',
+  'veg pizza.jpg',
+  'veg soup.jpg',
+  'veg thakali khana set.jpg',
+  'veg thukpa.jpg',
+  'veg-chilli-momo-.jpg',
+  'wai wai sadeko.png',
+] as const
+
+const imageAliases: Record<string, string> = {
+  'Special|Chicken Momo': 'chicken khote momo',
+  'Special|Biryani Chicken': 'chicken',
+  'Special|Chowmin Chicken': 'chicken chowmin',
+  'Special|Pizza Chicken': 'chicken pizza',
+  'Tea & Coffee|Milk Coffee': 'black coffee',
+  'Tea & Coffee|Hot Lemon': 'lemon tea',
+  'Soft Drinks|Coke/Fanta/Sprite/Dew/Pepsi/Slice': 'coke fanta dew sprite',
+  'Starter|Papad (dry/masala/fry)': 'papad fry dry masala',
+  'Starter|Peanut (plain/sadeko)': 'peanut sadeko',
+  'Starter|Kaju (plain/fry)': 'kaju fry',
+  'Veg Items|Veg Pakoda': 'veg pakauda',
+  'Veg Items|Paneer Pakoda': 'paneer pakauda',
+  'Non Veg Items (Chicken)|Chicken Chilly (boneless/with bone)': 'chicken chilly',
+  'Non Veg Items (Chicken)|Chicken Meat Ball': 'buff meatballs',
+  'Non Veg Items (Chicken)|Chicken Leg Piece Fry (2pcs)': 'chicken leg piece fry 2 pcs',
+  'Non Veg Items (Chicken)|Chicken 65 (per plate)': 'chicken',
+  'Momos|Veg Fry': 'fry veg momo',
+  'Momos|Veg Chilly': 'veg chilli momo',
+  'Momos|Buff C.': 'buff steam momo',
+  'Momos|Buff Fry': 'fried buff momo',
+  'Momos|Buff Khote': 'buff khote momo',
+  'Momos|Buff Chilly': 'chilly momo',
+  'Momos|Chicken Momo': 'chicken khote momo',
+  'Momos|Chicken C.': 'chicken khote momo',
+  'Momos|Chicken Fry': 'chicken khote momo',
+  'Momos|Chicken Khote': 'chicken khote momo',
+  'Momos|Chicken Chilly': 'chilly momo',
+  'Chowmin|Buff': 'mix chowmin',
+  'Chowmin|Egg': 'mix chowmin',
+  'Chowmin|Mixed': 'mix chowmin',
+  'Thukpa|Chicken': 'chichken thukpa',
+  'Nepali Thakali Khana|Veg': 'veg thakali khana set',
+  'Nepali Thakali Khana|Chicken': 'chicken thakali khana',
+  'Nepali Thakali Khana|Mutton': 'mutton khana thali set',
+  'Nepali Thakali Khana|Egg': 'veg thakali khana set',
+  'Nepali Thakali Khana|Fish': 'mutton khana set',
+  'Kati Roll|Mushroom': 'veg kathi roll',
+  'Burger|Buff': 'chicken burger',
+  'Soup|Mixed': 'mushroom soup',
+  'Salad|Fruit Salad (Small Plate)': 'fruit salad small plate',
+  'Lassi|Plain': 'plain lassi',
+  'Lassi|Sweet': 'sweet lassi',
+  'Lassi|Banana': 'banana lassi',
+  'Lassi|Mango': 'mango lassi',
+  'Lassi|Dry Fruit': 'dry fruit lassi',
+  'Milk Shake|Vanilla': 'php9s4dvoam',
+  'Milk Shake|Chocolate': 'php9s4dvoam',
+  'Milk Shake|Strawberry': 'php9s4dvoam',
+  'Milk Shake|Oreo Milkshake': 'php9s4dvoam',
+  'Fried Rice|Veg Fry Rice': 'veg fried rice',
+  'Fried Rice|Egg Fry Rice': 'egg fried rice',
+  'Fried Rice|Buff Fry Rice': 'buff chicken fried rice',
+  'Fried Rice|Chicken Fry Rice': 'chicken fried rice',
+  'Fried Rice|Mix Fry Rice': 'chinese fried rice',
+  'Omelette Egg|Plain Omelette': 'plain omlet',
+  'Omelette Egg|Masala Omelette': 'masala omlet',
+  'Omelette Egg|Fry Egg': 'fry omelette',
+  'Omelette Egg|Poach Egg': 'pouch egg',
+  'Sekuwa|Chicken Sekuwa': 'chichken sekuwa',
+  'Sadeko|Chicken (Boil)': 'chicken boil',
+  'Sadeko|Chicken (Fry)': 'chicken roast',
+  'Sadeko|Chicken (Sadeko)': 'chicken sadeko',
+  'Sadeko|Mutton (Boil)': 'mutton grevy',
+  'Sadeko|Mutton (Fry)': 'mutton taas',
+  'Sadeko|Mutton (Sadeko)': 'mutton sadeko',
+  'Sadeko|Bhatmas (Plain)': 'bhatmas sadeko',
+  'Sadeko|Bhatmas (Sadeko)': 'bhatmas sadeko',
+  'Sadeko|Aalu Sadeko': 'aalu sadeko',
+}
+
+const categoryImageSuffix: Record<string, string> = {
+  Chowmin: 'chowmin',
+  Thukpa: 'thukpa',
+  'Kati Roll': 'kathi roll',
+  Pizza: 'pizza',
+  Burger: 'burger',
+  Biryani: 'biryani',
+  Soup: 'soup',
+}
+
+const normalizeImageName = (value: string) =>
+  value
+    .toLowerCase()
+    .replace(/\.(jpg|jpeg|png|webp|svg)$/, '')
+    .replace(/&/g, ' and ')
+    .replace(/[^a-z0-9]+/g, ' ')
+    .trim()
+    .replace(/\s+/g, ' ')
+
+const imageByName = new Map(imageFiles.map((file) => [normalizeImageName(file), file]))
+
+const getMenuImage = (category: string, name: string, fallback: string) => {
+  const withoutDetails = normalizeImageName(name.replace(/\([^)]*\)/g, ''))
+  const suffix = categoryImageSuffix[category]
+  const candidates = [
+    imageAliases[`${category}|${name}`],
+    normalizeImageName(name),
+    withoutDetails,
+    suffix ? `${withoutDetails} ${suffix}` : undefined,
+  ].filter(Boolean) as string[]
+
+  const match = candidates.map((candidate) => imageByName.get(candidate)).find(Boolean)
+  return match ? `/images/${match}` : fallback
+}
+
+const getItemRating = (category: string, name: string) => {
+  const seed = `${category}-${name}`.split('').reduce((sum, char) => sum + char.charCodeAt(0), 0)
+  return (4.2 + (seed % 8) / 10).toFixed(1)
+}
+
+const categoryIcons = [
+  Utensils,
+  Coffee,
+  CupSoda,
+  ChefHat,
+  Salad,
+  Drumstick,
+  CookingPot,
+  Wheat,
+  Soup,
+  Sandwich,
+  Pizza,
+  Beef,
+  EggFried,
+  UtensilsCrossed,
+  Fish,
+  IceCreamBowl,
+  Milk,
+  GlassWater,
+  Wine,
+  CakeSlice,
+  Ham,
+  Candy,
+  Heart,
+  Apple,
+  Banana,
+  Bean,
+  Beer,
+  Carrot,
+  Cherry,
+  Cookie,
+  Donut,
+  Flame,
+  Leaf,
+  Martini,
+  Popcorn,
+  Vegan,
+]
 
 export default function MenuApp() {
   const [selectedCategory, setSelectedCategory] = useState('Special')
@@ -41,11 +357,11 @@ export default function MenuApp() {
     'Soft Drinks',
     'Starter',
     'Veg Items',
-    'Non Veg (Chicken)',
+    'Non Veg Items (Chicken)',
     'Momos',
     'Chowmin',
-    'Thukpa',
     'Kati Roll',
+    'Thukpa',
     'Pizza',
     'Burger',
     'Biryani',
@@ -98,14 +414,14 @@ export default function MenuApp() {
       { name: 'Kaju (plain/fry)', price: '200/250', image: '/images/pakoda.png' },
     ],
     'Veg Items': [
-      { name: 'Alu Fry', price: '90', image: '/images/alu-fry.png' },
+      { name: 'Aalu Fry', price: '90', image: '/images/alu-fry.png' },
       { name: 'Veg Pakoda', price: '140', image: '/images/pakoda.png' },
       { name: 'Potato Chilly', price: '160', image: '/images/alu-fry.png' },
       { name: 'Mushroom Pakoda', price: '160', image: '/images/pakoda.png' },
       { name: 'Paneer Pakoda', price: '280', image: '/images/pakoda.png' },
       { name: 'Mushroom Chilly', price: '160', image: '/images/pakoda.png' },
     ],
-    'Non Veg (Chicken)': [
+    'Non Veg Items (Chicken)': [
       { name: 'Chicken Roast', price: '350', image: '/images/chicken-roast.png' },
       { name: 'Chicken Boil', price: '300', image: '/images/chicken-roast.png' },
       { name: 'Chicken Chilly (boneless/with bone)', price: '380', image: '/images/chicken-roast.png' },
@@ -138,18 +454,18 @@ export default function MenuApp() {
       { name: 'Egg', price: '140', image: '/images/chowmin.png' },
       { name: 'Mixed', price: '200', image: '/images/chowmin.png' },
     ],
-    'Thukpa': [
-      { name: 'Veg Thukpa', price: '150', image: '/images/thukpa.png' },
-      { name: 'Chicken', price: '200', image: '/images/thukpa.png' },
-      { name: 'Mutton', price: '250', image: '/images/thukpa.png' },
-      { name: 'Mixed', price: '300', image: '/images/thukpa.png' },
-    ],
     'Kati Roll': [
       { name: 'Veg', price: '180', image: '/images/kati-roll.png' },
       { name: 'Chicken', price: '250', image: '/images/kati-roll.png' },
       { name: 'Egg', price: '200', image: '/images/kati-roll.png' },
       { name: 'Mushroom', price: '200', image: '/images/kati-roll.png' },
       { name: 'Paneer', price: '230', image: '/images/kati-roll.png' },
+    ],
+    'Thukpa': [
+      { name: 'Veg Thukpa', price: '150', image: '/images/thukpa.png' },
+      { name: 'Chicken', price: '200', image: '/images/thukpa.png' },
+      { name: 'Mutton', price: '250', image: '/images/thukpa.png' },
+      { name: 'Mixed', price: '300', image: '/images/thukpa.png' },
     ],
     'Pizza': [
       { name: 'Veg', price: '400', image: '/images/pizza.png' },
@@ -220,7 +536,7 @@ export default function MenuApp() {
       { name: 'Plain Omelette', price: '50', image: '/images/omelette.png' },
       { name: 'Masala Omelette', price: '80', image: '/images/omelette.png' },
       { name: 'Fry Egg', price: '60', image: '/images/omelette.png' },
-      { name: 'Pouch Egg', price: '70', image: '/images/omelette.png' },
+      { name: 'Poach Egg', price: '70', image: '/images/omelette.png' },
       { name: 'Boiled Egg', price: '50', image: '/images/omelette.png' },
     ],
     'Mutton': [
@@ -231,9 +547,9 @@ export default function MenuApp() {
     'Pork': [
       { name: 'Pork Tawa', price: '400', image: '/images/pork.png' },
       { name: 'Pork Fry', price: '375', image: '/images/pork.png' },
-      { name: 'Pork Sadeko', price: '430', image: '/images/pork.png' },
+      { name: 'Pork Sadeko', price: '450', image: '/images/pork.png' },
       { name: 'Pork Boil', price: '350', image: '/images/pork.png' },
-      { name: 'Pork Chhoila', price: '430', image: '/images/pork.png' },
+      { name: 'Pork Choila', price: '430', image: '/images/pork.png' },
       { name: 'Pork Chilly', price: '450', image: '/images/pork.png' },
     ],
     'Sekuwa': [
@@ -253,9 +569,14 @@ export default function MenuApp() {
     ],
     'Sadeko': [
       { name: 'Peanuts Sadeko', price: '120', image: '/images/pakoda.png' },
-      { name: 'Chicken (boil/fry/sadeko)', price: '300 / 320 / 350', image: '/images/chicken-roast.png' },
-      { name: 'Mutton (boil/fry/sadeko)', price: '400 / 450 / 500', image: '/images/mutton.png' },
-      { name: 'Bhatmas (plain/sadeko)', price: '100', image: '/images/pakoda.png' },
+      { name: 'Chicken (Boil)', price: '300', image: '/images/chicken-roast.png' },
+      { name: 'Chicken (Fry)', price: '320', image: '/images/chicken-roast.png' },
+      { name: 'Chicken (Sadeko)', price: '350', image: '/images/chicken-roast.png' },
+      { name: 'Mutton (Boil)', price: '400', image: '/images/mutton.png' },
+      { name: 'Mutton (Fry)', price: '450', image: '/images/mutton.png' },
+      { name: 'Mutton (Sadeko)', price: '500', image: '/images/mutton.png' },
+      { name: 'Bhatmas (Plain)', price: '100', image: '/images/pakoda.png' },
+      { name: 'Bhatmas (Sadeko)', price: '100', image: '/images/pakoda.png' },
       { name: 'Mushroom Sadeko', price: '200', image: '/images/pakoda.png' },
       { name: 'Aalu Sadeko', price: '120', image: '/images/alu-fry.png' },
       { name: 'Wai Wai Sadeko', price: '100', image: '/images/chowmin.png' },
@@ -283,201 +604,223 @@ export default function MenuApp() {
       })) || [])
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-purple-50 relative overflow-hidden">
-      {/* Animated Background Blobs */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
-        <div className="absolute top-40 left-40 w-72 h-72 bg-pink-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
-        <div className="absolute -bottom-8 right-20 w-80 h-80 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
-      </div>
-
-      {/* Status Bar */}
-      <div className="sticky top-0 z-50 bg-white/80 backdrop-blur-lg border-b border-purple-100">
-        <div className="px-4 py-2 flex items-center justify-between text-xs text-purple-600">
-          <span className="font-semibold">{currentTime}</span>
-          <div className="flex gap-1">
-            <span>📶</span>
-            <span>📡</span>
-            <span>🔋</span>
-          </div>
+    <div className="min-h-screen overflow-hidden bg-[#f4f5f4] text-[#222827]">
+      <header className="relative bg-[#e9eeeb]">
+        <div className="absolute inset-y-0 right-0 hidden w-1/2 overflow-hidden md:block">
+          <Image
+            src="/images/chicken roast.jpg"
+            alt=""
+            fill
+            priority
+            sizes="50vw"
+            className="object-cover opacity-20"
+          />
         </div>
-      </div>
-
-      {/* Header */}
-      <div className="bg-white/70 backdrop-blur-xl sticky top-8 z-40 px-4 py-5 border-b border-purple-100">
-        <div className="w-full">
-          <div className="flex items-start justify-between mb-4 animate-fade-in">
+        <div className="relative mx-auto flex max-w-7xl items-center justify-between px-5 py-6 sm:px-8 lg:px-12">
+          <div className="flex items-center gap-3">
+            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#2f6f68] text-white shadow-lg shadow-[#2f6f68]/20">
+              <Utensils className="h-5 w-5" />
+            </div>
             <div>
-              <p className="text-sm text-purple-600 font-medium">{greeting},</p>
-              <h1 className="text-3xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">from Pool Restaurant</h1>
-              <p className="text-xs text-purple-500 mt-1">{currentDate}</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#2f6f68]">{greeting}</p>
+              <h1 className="text-2xl font-black sm:text-3xl">Pool Restaurant</h1>
+              <p className="text-xs font-medium text-[#7b8581]">{currentDate} · {currentTime}</p>
             </div>
-            <button
-              onClick={() => setShowPaymentModal(true)}
-              className="group relative px-4 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full text-xs font-bold hover:shadow-lg hover:shadow-purple-300 transition-all duration-300 transform hover:scale-105 animate-pulse-soft flex items-center gap-2"
-            >
-              <Smartphone className="w-4 h-4" />
-              Pay
-            </button>
           </div>
-
-          {/* Search Bar */}
-          <div className="relative mb-4 group">
-            <Search className="absolute left-3 top-3.5 w-5 h-5 text-purple-400" />
-            <input
-              type="text"
-              placeholder="Search all items..."
-              value={searchTerm}
-              onChange={(e) => {
-                setSearchTerm(e.target.value)
-                setIsSearching(e.target.value.length > 0)
-              }}
-              onFocus={() => setIsSearching(true)}
-              onBlur={() => searchTerm === '' && setIsSearching(false)}
-              className="w-full pl-10 pr-10 py-3 border border-purple-200 rounded-full text-sm focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-200 bg-white/80 backdrop-blur-sm transition-all duration-300"
-            />
-            <button className="absolute right-3 top-3.5 text-purple-400">⚙️</button>
-          </div>
-
-          {/* Category Pills */}
-          {!isSearching && (
-            <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide animate-fade-in">
-              {categories.map((cat, idx) => (
-                <button
-                  key={cat}
-                  onClick={() => setSelectedCategory(cat)}
-                  style={{ animationDelay: `${idx * 30}ms` }}
-                  className={`px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition-all duration-300 animate-slide-up ${
-                    selectedCategory === cat
-                      ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg shadow-purple-300'
-                      : 'bg-white/60 text-purple-700 hover:bg-white border border-purple-100'
-                  }`}
-                >
-                  {cat}
-                </button>
-              ))}
-            </div>
-          )}
+          <button
+            onClick={() => setShowPaymentModal(true)}
+            className="inline-flex h-11 items-center justify-center gap-2 rounded-full bg-[#2f6f68] px-5 text-sm font-bold text-white shadow-xl shadow-[#2f6f68]/20 transition hover:bg-[#285f59]"
+          >
+            <Smartphone className="h-4 w-4" />
+            Pay
+          </button>
         </div>
-      </div>
+      </header>
 
-      {/* Special Offers Banner */}
-      {!isSearching && selectedCategory === 'Special' && (
-        <div className="px-4 py-6 relative z-10 animate-fade-in">
-          <div className="max-w-full mx-auto">
-            <div className="relative overflow-hidden rounded-3xl p-8 bg-gradient-to-r from-purple-500 via-pink-500 to-purple-600 text-white shadow-2xl">
-              <div className="absolute inset-0 opacity-20">
-                <div className="absolute top-0 right-0 w-40 h-40 bg-white rounded-full mix-blend-screen filter blur-2xl"></div>
-              </div>
-              <div className="relative z-10">
-                <h2 className="text-2xl font-bold mb-2">Specially Curated For You</h2>
-                <p className="text-purple-100 text-sm">Handpicked favorites and our most popular dishes</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Main Content */}
-      <div className="w-full px-4 py-6 pb-20 relative z-10">
-        {isSearching && searchTerm && (
-          <div className="mb-6 animate-fade-in">
-            <p className="text-sm text-sky-700 font-semibold">
-              Search results for <span className="text-sky-600">'{searchTerm}'</span> • Found {filteredItems.length} item{filteredItems.length !== 1 ? 's' : ''}
+      <main className="mx-auto max-w-7xl px-5 py-10 sm:px-8 lg:px-12">
+        <section className="mb-10 grid gap-6 lg:grid-cols-[minmax(300px,0.85fr)_minmax(0,1.6fr)] lg:items-end">
+          <div>
+            <h2 className="text-3xl font-black tracking-tight sm:text-4xl">Our Popular Menu</h2>
+            <p className="mt-3 max-w-xl text-sm leading-6 text-[#7b8581]">
+              Fresh dishes, drinks, khaja sets and restaurant favorites from our full menu.
             </p>
+          </div>
+
+          <div className="grid min-w-0 gap-4">
+            <div className="relative">
+              <Search className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[#95a09b]" />
+              <input
+                type="text"
+                placeholder="Search menu"
+                value={searchTerm}
+                onChange={(e) => {
+                  setSearchTerm(e.target.value)
+                  setIsSearching(e.target.value.length > 0)
+                }}
+                onFocus={() => setIsSearching(true)}
+                onBlur={() => searchTerm === '' && setIsSearching(false)}
+                className="h-12 w-full rounded-full border border-[#e3e6e4] bg-white pl-11 pr-5 text-sm font-semibold text-[#26302e] shadow-sm outline-none transition focus:border-[#2f6f68] focus:ring-4 focus:ring-[#2f6f68]/10"
+              />
+            </div>
+
+            {!isSearching && (
+              <div className="flex gap-3 overflow-x-auto pb-2">
+                {categories.map((cat, idx) => {
+                  const CategoryIcon = categoryIcons[idx % categoryIcons.length]
+                  const isSelected = selectedCategory === cat
+
+                  return (
+                    <button
+                      key={cat}
+                      onClick={() => setSelectedCategory(cat)}
+                      title={cat}
+                      aria-label={cat}
+                      className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-md border shadow-sm transition ${
+                        isSelected
+                          ? 'border-[#2f6f68] bg-[#2f6f68] text-white shadow-[#2f6f68]/20'
+                          : 'border-[#ecefed] bg-white text-[#9ba5a0] hover:border-[#2f6f68]/40 hover:text-[#2f6f68]'
+                      }`}
+                    >
+                      <CategoryIcon className="h-5 w-5" />
+                    </button>
+                  )
+                })}
+              </div>
+            )}
+          </div>
+        </section>
+
+        {isSearching && searchTerm && (
+          <p className="mb-8 text-sm font-semibold text-[#64716d]">
+            Search results for <span className="text-[#2f6f68]">{searchTerm}</span> · {filteredItems.length} item{filteredItems.length !== 1 ? 's' : ''}
+          </p>
+        )}
+
+        {!isSearching && (
+          <div className="mb-8 flex items-center justify-between">
+            <p className="text-sm font-black uppercase tracking-[0.22em] text-[#2f6f68]">{selectedCategory}</p>
+            <p className="text-sm font-semibold text-[#9aa39f]">{filteredItems.length} items</p>
           </div>
         )}
 
-        {/* Menu Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
-          {filteredItems.map((item, idx) => (
-            <div
-              key={idx}
-              style={{ animationDelay: `${idx * 50}ms` }}
-              className="group animate-slide-up"
-            >
-              <div className="bg-white/90 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 border border-purple-100 cursor-pointer h-full flex flex-col hover:border-purple-300">
-                {/* Image Section */}
-                <div className="relative bg-gradient-to-br from-sky-100 to-blue-100 aspect-square overflow-hidden">
-                  <img
-                    src={item.image}
+        <div
+          key={`${selectedCategory}-${searchTerm}`}
+          className="grid grid-cols-1 gap-x-10 gap-y-16 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+        >
+          {filteredItems.map((item, idx) => {
+            const imageSrc = getMenuImage(item.category, item.name, item.image)
+            const rating = getItemRating(item.category, item.name)
+
+            return (
+              <article key={`${item.category}-${item.name}`} className="group relative pt-14">
+                <div className="absolute left-7 top-0 z-10 h-28 w-28 overflow-hidden rounded-full bg-[#edf0ee] shadow-xl shadow-black/10 ring-8 ring-[#f4f5f4]">
+                  <Image
+                    src={imageSrc}
                     alt={item.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    fill
+                    priority={idx < 4}
+                    sizes="112px"
+                    className="object-cover transition duration-300 group-hover:scale-105"
                   />
-                  {item.popular && (
-                    <div className="absolute top-2 right-2 bg-gradient-to-r from-orange-400 to-red-500 text-white px-3 py-1 rounded-full text-xs font-bold animate-bounce">
-                      Popular
-                    </div>
-                  )}
                 </div>
 
-                {/* Info Section */}
-                <div className="p-4 flex-1 flex flex-col">
-                  <h3 className="font-bold text-xs sm:text-sm text-gray-900 mb-2 line-clamp-2 min-h-9 group-hover:text-purple-600 transition-colors">
-                    {item.name}
-                  </h3>
-                  
-                  {/* Price */}
-                  <div className="mt-auto pt-2 border-t border-purple-100">
-                    <span className="font-bold text-purple-600 text-sm">NPR {item.price}</span>
+                <div className="min-h-44 rounded-[28px] bg-white px-6 pb-6 pt-16 shadow-[0_24px_40px_rgba(35,45,43,0.08)] transition duration-300 group-hover:-translate-y-1 group-hover:shadow-[0_28px_50px_rgba(35,45,43,0.12)]">
+                  <div className="mb-4 flex items-start justify-between gap-4">
+                    <button
+                      type="button"
+                      aria-label={`Save ${item.name}`}
+                      className="mt-1 flex h-8 w-8 items-center justify-center rounded-full text-[#a5aeaa] transition hover:bg-[#f0f4f2] hover:text-[#2f6f68]"
+                    >
+                      <Heart className="h-4 w-4" />
+                    </button>
+                    <div className="flex items-center gap-1 text-xs font-black text-[#252b2a]">
+                      {rating}
+                      <Star className="h-3.5 w-3.5 fill-[#f5d74f] text-[#f5d74f]" />
+                    </div>
+                  </div>
+
+                  <h3 className="min-h-10 text-sm font-black leading-5 text-[#202826]">{item.name}</h3>
+                  <p className="mt-1 min-h-5 truncate text-xs font-semibold text-[#a1aaa6]">{item.category}</p>
+
+                  <div className="mt-6 flex items-center justify-between gap-4">
+                    <div className="h-2 w-20 rounded-full bg-[#2f6f68]" />
+                    <p className="whitespace-nowrap text-sm font-black text-[#202826]">Rs {item.price}</p>
                   </div>
                 </div>
-              </div>
-            </div>
-          ))}
+              </article>
+            )
+          })}
         </div>
 
-        {/* Empty State */}
         {filteredItems.length === 0 && (
-          <div className="text-center py-16 animate-fade-in">
-            <p className="text-purple-700 text-base font-semibold">
+          <div className="py-16 text-center">
+            <p className="text-base font-black text-[#2f6f68]">
               {isSearching ? `No items found for "${searchTerm}"` : `No items available in ${selectedCategory}`}
             </p>
-            <p className="text-purple-500 text-sm mt-2">Try another search or category</p>
           </div>
         )}
-      </div>
+      </main>
 
       {/* Payment Modal */}
       {showPaymentModal && (
-        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-fade-in">
-          <div className="bg-white rounded-3xl shadow-2xl max-w-md w-full p-8 animate-scale-up">
-            <h2 className="text-2xl font-bold text-gray-900 mb-2">Payment</h2>
-            <p className="text-gray-600 text-sm mb-6">Scan or download QR code to pay</p>
-
-            {/* QR Code Display */}
-            <div className="mb-6 flex justify-center">
-              <div className="bg-gradient-to-br from-purple-100 to-pink-100 p-6 rounded-2xl">
-                <div className="w-48 h-48 bg-white rounded-xl flex items-center justify-center border-2 border-purple-300">
-                  <div className="text-center">
-                    <p className="text-gray-400 text-sm font-semibold mb-2">QR Code</p>
-                    <div className="w-32 h-32 bg-gray-200 rounded-lg flex items-center justify-center">
-                      <span className="text-3xl">📱</span>
-                    </div>
-                  </div>
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#202826]/50 p-4 backdrop-blur-sm animate-fade-in">
+          <div className="w-full max-w-md overflow-hidden rounded-[28px] bg-[#f4f5f4] shadow-2xl animate-scale-up">
+            <div className="relative bg-[#e9eeeb] px-8 py-7">
+              <div className="absolute right-0 top-0 h-full w-36 overflow-hidden opacity-20">
+                <Image
+                  src="/images/chicken roast.jpg"
+                  alt=""
+                  fill
+                  sizes="144px"
+                  className="object-cover"
+                />
+              </div>
+              <div className="relative flex items-center gap-3">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#2f6f68] text-white shadow-lg shadow-[#2f6f68]/20">
+                  <Smartphone className="h-5 w-5" />
+                </div>
+                <div>
+                  <h2 className="text-2xl font-black text-[#202826]">Payment</h2>
+                  <p className="text-sm font-semibold text-[#7b8581]">Scan or download QR code to pay</p>
                 </div>
               </div>
             </div>
 
-            {/* Action Buttons */}
-            <div className="grid grid-cols-2 gap-3 mb-4">
-              <button className="flex items-center justify-center gap-2 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-xl font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105">
-                <Download className="w-4 h-4" />
-                Download
-              </button>
-              <button className="flex items-center justify-center gap-2 py-3 bg-gray-100 text-gray-700 rounded-xl font-semibold hover:bg-gray-200 transition-all duration-300">
-                <Smartphone className="w-4 h-4" />
-                Scan
+            {/* QR Code Display */}
+            <div className="px-8 py-7">
+              <div className="mb-6 flex justify-center">
+                <div className="rounded-[24px] bg-white p-5 shadow-[0_24px_40px_rgba(35,45,43,0.08)]">
+                  <div className="flex h-48 w-48 items-center justify-center rounded-[18px] border border-[#dce3df] bg-[#f9faf9]">
+                    <div className="text-center">
+                      <p className="mb-3 text-sm font-black uppercase tracking-[0.18em] text-[#2f6f68]">QR Code</p>
+                      <div className="mx-auto flex h-28 w-28 items-center justify-center rounded-2xl bg-[#e9eeeb] text-[#2f6f68]">
+                        <Smartphone className="h-10 w-10" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="mb-4 grid grid-cols-2 gap-3">
+                <button className="flex items-center justify-center gap-2 rounded-full bg-[#2f6f68] py-3 font-bold text-white shadow-lg shadow-[#2f6f68]/20 transition hover:bg-[#285f59]">
+                  <Download className="h-4 w-4" />
+                  Download
+                </button>
+                <button className="flex items-center justify-center gap-2 rounded-full border border-[#dce3df] bg-white py-3 font-bold text-[#2f6f68] transition hover:border-[#2f6f68]/40">
+                  <Smartphone className="h-4 w-4" />
+                  Scan
+                </button>
+              </div>
+
+              {/* Close Button */}
+              <button
+                onClick={() => setShowPaymentModal(false)}
+                className="w-full rounded-full border border-[#dce3df] bg-white py-3 font-bold text-[#64716d] transition hover:border-[#2f6f68]/40 hover:text-[#2f6f68]"
+              >
+                Close
               </button>
             </div>
-
-            {/* Close Button */}
-            <button
-              onClick={() => setShowPaymentModal(false)}
-              className="w-full py-3 border border-purple-200 text-purple-600 rounded-xl font-semibold hover:bg-purple-50 transition-all duration-300"
-            >
-              Close
-            </button>
           </div>
         </div>
       )}
