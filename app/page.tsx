@@ -251,6 +251,11 @@ const categoryImageSuffix: Record<string, string> = {
   Soup: 'soup',
 }
 
+const paymentQrs = [
+  { name: 'Payment QR 1', src: '/images/qr1.jpeg' },
+  { name: 'Payment QR 2', src: '/images/qr2.jpeg' },
+]
+
 const normalizeImageName = (value: string) =>
   value
     .toLowerCase()
@@ -372,12 +377,18 @@ export default function MenuApp() {
     'Lassi',
     'Milk Shake',
     'Juice',
+    'Beer',
+    'Wine',
+    'Whiskey / Vodka',
     'Fried Rice',
     'Omelette Egg',
     'Mutton',
     'Pork',
+    'Buff',
     'Sekuwa',
     'Khaja Set',
+    'Hot Set',
+    'Half Full',
     'Taas',
     'Sadeko',
   ]
@@ -388,39 +399,40 @@ export default function MenuApp() {
       { name: 'Chicken Momo', price: '140', image: '/images/momo.png', popular: true },
       { name: 'Mutton Khaja Set', price: '500', image: '/images/thakali-khana.png', popular: true },
       { name: 'Biryani Chicken', price: '450', image: '/images/biryani.png', popular: true },
-      { name: 'French Fry', price: '150', image: '/images/french-fry.png' },
+      { name: 'French Fry', price: '180', image: '/images/french-fry.png' },
       { name: 'Chowmin Chicken', price: '150', image: '/images/chowmin.png' },
-      { name: 'Milk Tea', price: '40', image: '/images/milk-tea.png' },
+      { name: 'Milk Tea', price: '50', image: '/images/milk-tea.png' },
       { name: 'Pizza Chicken', price: '500', image: '/images/pizza.png' },
     ],
     'Tea & Coffee': [
-      { name: 'Milk Tea', price: '40', image: '/images/milk-tea.png' },
-      { name: 'Black Tea', price: '30', image: '/images/black-tea.png' },
-      { name: 'Milk Coffee', price: '100', image: '/images/coffee.png' },
-      { name: 'Black Coffee', price: '60', image: '/images/coffee.png' },
-      { name: 'Cold Coffee', price: '100', image: '/images/cold-coffee.png' },
+      { name: 'Milk Tea', price: '50', image: '/images/milk-tea.png' },
+      { name: 'Black Tea', price: '40', image: '/images/black-tea.png' },
+      { name: 'Milk Coffee', price: '120', image: '/images/coffee.png' },
+      { name: 'Black Coffee', price: '80', image: '/images/coffee.png' },
+      { name: 'Cold Coffee', price: '160', image: '/images/cold-coffee.png' },
       { name: 'Hot Lemon', price: '60', image: '/images/black-tea.png' },
       { name: 'Lemon Tea', price: '50', image: '/images/black-tea.png' },
     ],
     'Soft Drinks': [
-      { name: 'Coke/Fanta/Sprite/Dew/Pepsi/Slice', price: '60', image: '/images/soft-drinks.png' },
+      { name: 'Coke/Fanta/Sprite/Dew/Pepsi/Slice', price: '70', image: '/images/soft-drinks.png' },
       { name: 'Lemon Soda', price: '60', image: '/images/soft-drinks.png' },
       { name: 'Soda Water', price: '110', image: '/images/soft-drinks.png' },
       { name: 'Min. Water', price: '25', image: '/images/soft-drinks.png' },
     ],
     'Starter': [
-      { name: 'French Fry', price: '150', image: '/images/french-fry.png' },
-      { name: 'Papad (dry/masala/fry)', price: '50/80/60', image: '/images/pakoda.png' },
-      { name: 'Peanut (plain/sadeko)', price: '80/120', image: '/images/pakoda.png' },
-      { name: 'Kaju (plain/fry)', price: '200/250', image: '/images/pakoda.png' },
+      { name: 'French Fry', price: '180', image: '/images/french-fry.png' },
+      { name: 'Papad (dry/masala/fry)', price: '50/100/60', image: '/images/pakoda.png' },
+      { name: 'Peanut (plain/sadeko)', price: '100/180', image: '/images/pakoda.png' },
+      { name: 'Kaju (plain/fry)', price: '250/300', image: '/images/pakoda.png' },
     ],
     'Veg Items': [
       { name: 'Aalu Fry', price: '90', image: '/images/alu-fry.png' },
-      { name: 'Veg Pakoda', price: '140', image: '/images/pakoda.png' },
-      { name: 'Potato Chilly', price: '160', image: '/images/alu-fry.png' },
-      { name: 'Mushroom Pakoda', price: '160', image: '/images/pakoda.png' },
-      { name: 'Paneer Pakoda', price: '280', image: '/images/pakoda.png' },
-      { name: 'Mushroom Chilly', price: '160', image: '/images/pakoda.png' },
+      { name: 'Alu Jira', price: '180', image: '/images/alu-fry.png' },
+      { name: 'Veg Pakoda', price: '200', image: '/images/pakoda.png' },
+      { name: 'Potato Chilly', price: '220', image: '/images/alu-fry.png' },
+      { name: 'Mushroom Pakoda', price: '280', image: '/images/pakoda.png' },
+      { name: 'Paneer Pakoda', price: '300', image: '/images/pakoda.png' },
+      { name: 'Mushroom Chilly', price: '300', image: '/images/pakoda.png' },
     ],
     'Non Veg Items (Chicken)': [
       { name: 'Chicken Roast', price: '350', image: '/images/chicken-roast.png' },
@@ -436,17 +448,21 @@ export default function MenuApp() {
     'Momos': [
       { name: 'Veg Momo', price: '120', image: '/images/momo.png' },
       { name: 'Veg Fry', price: '140', image: '/images/momo.png' },
-      { name: 'Veg Chilly', price: '150', image: '/images/momo.png' },
+      { name: 'Veg Chilly', price: '160', image: '/images/momo.png' },
       { name: 'Buff Momo', price: '140', image: '/images/momo.png' },
       { name: 'Buff C.', price: '160', image: '/images/momo.png' },
       { name: 'Buff Fry', price: '150', image: '/images/momo.png' },
-      { name: 'Buff Khote', price: '180', image: '/images/momo.png' },
-      { name: 'Buff Chilly', price: '200', image: '/images/momo.png' },
+      { name: 'Buff Khote', price: '200', image: '/images/momo.png' },
+      { name: 'Buff Chilly', price: '180', image: '/images/momo.png' },
       { name: 'Chicken Momo', price: '140', image: '/images/momo.png' },
       { name: 'Chicken C.', price: '160', image: '/images/momo.png' },
       { name: 'Chicken Fry', price: '150', image: '/images/momo.png' },
-      { name: 'Chicken Khote', price: '180', image: '/images/momo.png' },
-      { name: 'Chicken Chilly', price: '200', image: '/images/momo.png' },
+      { name: 'Chicken Khote', price: '200', image: '/images/momo.png' },
+      { name: 'Chicken Chilly', price: '180', image: '/images/momo.png' },
+      { name: 'Chicken Chilli Momo', price: '160', image: '/images/momo.png' },
+      { name: 'Paneer Momo', price: '280', image: '/images/momo.png' },
+      { name: 'Paneer Fry', price: '200', image: '/images/momo.png' },
+      { name: 'Paneer Jhol', price: '220', image: '/images/momo.png' },
     ],
     'Chowmin': [
       { name: 'Buff', price: '150', image: '/images/chowmin.png' },
@@ -512,9 +528,9 @@ export default function MenuApp() {
     'Lassi': [
       { name: 'Plain', price: '120', image: '/images/lassi.png' },
       { name: 'Sweet', price: '130', image: '/images/lassi.png' },
-      { name: 'Banana', price: '160', image: '/images/lassi.png' },
-      { name: 'Mango', price: '180', image: '/images/lassi.png' },
-      { name: 'Dry Fruit', price: '200', image: '/images/lassi.png' },
+      { name: 'Banana', price: '180', image: '/images/lassi.png' },
+      { name: 'Mango', price: '200', image: '/images/lassi.png' },
+      { name: 'Dry Fruit', price: '230', image: '/images/lassi.png' },
     ],
     'Milk Shake': [
       { name: 'Vanilla', price: '250', image: '/images/milkshake.png' },
@@ -525,6 +541,30 @@ export default function MenuApp() {
     'Juice': [
       { name: 'Mango Juice', price: '250', image: '/images/juice.png' },
       { name: 'Orange Juice', price: '250', image: '/images/juice.png' },
+    ],
+    'Beer': [
+      { name: 'Gorkha Strong (300ml/650ml)', price: '250/500', image: '/images/coke_fanta_dew_sprite.jpg' },
+      { name: 'Tuborg (300ml/650ml)', price: '300/600', image: '/images/coke_fanta_dew_sprite.jpg' },
+      { name: 'Arna (300ml)', price: '250', image: '/images/coke_fanta_dew_sprite.jpg' },
+      { name: 'Barahsinghe (300ml/650ml)', price: '300/550', image: '/images/coke_fanta_dew_sprite.jpg' },
+      { name: 'Carlsberg (300ml/650ml)', price: '350/650', image: '/images/coke_fanta_dew_sprite.jpg' },
+      { name: '500 Beer (650ml)', price: '380', image: '/images/coke_fanta_dew_sprite.jpg' },
+      { name: 'Tuborg Can Beer', price: '450', image: '/images/coke_fanta_dew_sprite.jpg' },
+      { name: 'Gorkha 500', price: '400', image: '/images/coke_fanta_dew_sprite.jpg' },
+    ],
+    'Wine': [
+      { name: 'Big Master (750ml)', price: '1100', image: '/images/coke_fanta_dew_sprite.jpg' },
+      { name: 'Canvas (750ml)', price: '1100', image: '/images/coke_fanta_dew_sprite.jpg' },
+    ],
+    'Whiskey / Vodka': [
+      { name: 'Golden Oak (60/90/180/375/750ml)', price: '200/250/400/800/1600', image: '/images/coke_fanta_dew_sprite.jpg' },
+      { name: 'Old Durbar Red (60/90/180/375/750ml)', price: '280/430/800/1600/3200', image: '/images/coke_fanta_dew_sprite.jpg' },
+      { name: 'Old Durbar Black (60/90/180/375/750ml)', price: '380/550/1050/2050/4100', image: '/images/coke_fanta_dew_sprite.jpg' },
+      { name: '8848 Vodka (60/90/180/375/750ml)', price: '270/400/750/1500/3000', image: '/images/coke_fanta_dew_sprite.jpg' },
+      { name: 'Khukri Rum (60/90/180/375/750ml)', price: '250/350/700/1350/2700', image: '/images/coke_fanta_dew_sprite.jpg' },
+      { name: 'Signature Red (60/90/180/375/750ml)', price: '280/430/800/1600/3200', image: '/images/coke_fanta_dew_sprite.jpg' },
+      { name: 'Mustang (60/90/180/375/750ml)', price: '150/200/400/800/1600', image: '/images/coke_fanta_dew_sprite.jpg' },
+      { name: 'Highlander (60/90/180/375/750ml)', price: '140/200/375/750/1500', image: '/images/coke_fanta_dew_sprite.jpg' },
     ],
     'Fried Rice': [
       { name: 'Veg Fry Rice', price: '200', image: '/images/fried-rice.png' },
@@ -541,45 +581,69 @@ export default function MenuApp() {
       { name: 'Boiled Egg', price: '50', image: '/images/omelette.png' },
     ],
     'Mutton': [
-      { name: 'Mutton Chilly', price: '500', image: '/images/mutton.png' },
-      { name: 'Mutton Grevy', price: '400', image: '/images/mutton.png' },
-      { name: 'Mutton Taas', price: '450', image: '/images/mutton.png' },
+      { name: 'Mutton Chilly (Small/Large)', price: '400/500', image: '/images/mutton.png' },
+      { name: 'Mutton Grevy (Small/Large)', price: '300/450', image: '/images/mutton.png' },
+      { name: 'Mutton Taas (Small/Large)', price: '350/450', image: '/images/mutton.png' },
+      { name: 'Mutton Boil (Small/Large)', price: '300/400', image: '/images/mutton.png' },
     ],
     'Pork': [
       { name: 'Pork Tawa', price: '400', image: '/images/pork.png' },
       { name: 'Pork Fry', price: '375', image: '/images/pork.png' },
-      { name: 'Pork Sadeko', price: '450', image: '/images/pork.png' },
-      { name: 'Pork Boil', price: '350', image: '/images/pork.png' },
-      { name: 'Pork Choila', price: '430', image: '/images/pork.png' },
-      { name: 'Pork Chilly', price: '450', image: '/images/pork.png' },
+      { name: 'Pork Sadeko (Fry/Boil, Small/Large)', price: '400/500', image: '/images/pork.png' },
+      { name: 'Pork Boil (Small/Large)', price: '300/400', image: '/images/pork.png' },
+      { name: 'Pork Choila (Small/Large)', price: '360/460', image: '/images/pork.png' },
+      { name: 'Pork Chilly (Small/Large)', price: '360/480', image: '/images/pork.png' },
+      { name: 'Pork Sekuwa (Small/Large)', price: '350/450', image: '/images/pork.png' },
+    ],
+    'Buff': [
+      { name: 'Sukuti (Small/Large)', price: '300/400', image: '/images/buff sekuwa.jpg' },
+      { name: 'Choila (Small/Large)', price: '330/430', image: '/images/buff sekuwa.jpg' },
+      { name: 'Gravy (Small/Large)', price: '250/350', image: '/images/buff sekuwa.jpg' },
     ],
     'Sekuwa': [
-      { name: 'Buff Sekuwa', price: '120', image: '/images/sekuwa.png' },
-      { name: 'Chicken Sekuwa', price: '120', image: '/images/sekuwa.png' },
-      { name: 'Mutton Sekuwa', price: '200', image: '/images/sekuwa.png' },
+      { name: 'Buff Sekuwa', price: '150', image: '/images/sekuwa.png' },
+      { name: 'Chicken Sekuwa', price: '150', image: '/images/sekuwa.png' },
+      { name: 'Mutton Sekuwa', price: '150', image: '/images/sekuwa.png' },
+      { name: 'Pork Sekuwa', price: '180', image: '/images/sekuwa.png' },
     ],
     'Khaja Set': [
-      { name: 'Chicken Khaja Set', price: '400', image: '/images/thakali-khana.png' },
-      { name: 'Mutton Khaja Set', price: '500', image: '/images/thakali-khana.png' },
-      { name: 'Veg Khaja Set', price: '300', image: '/images/thakali-khana.png' },
-      { name: 'Buff Khaja Set', price: '380', image: '/images/thakali-khana.png' },
+      { name: 'Chicken Khaja Set', price: '450', image: '/images/thakali-khana.png' },
+      { name: 'Mutton Khaja Set', price: '600', image: '/images/thakali-khana.png' },
+      { name: 'Veg Khaja Set', price: '350', image: '/images/thakali-khana.png' },
+      { name: 'Buff Khaja Set', price: '480', image: '/images/thakali-khana.png' },
+    ],
+    'Hot Set': [
+      { name: 'Chicken Hot Set', price: '450', image: '/images/chicken khaja set.jpg' },
+      { name: 'Mutton Hot Set', price: '600', image: '/images/mutton khaja set.jpg' },
+      { name: 'Veg Hot Set', price: '350', image: '/images/veg khaja set.jpg' },
+      { name: 'Buff Hot Set', price: '480', image: '/images/Buff Khaja Set.jpg' },
+    ],
+    'Half Full': [
+      { name: 'Chicken', price: '180', image: '/images/chicken.jpg' },
+      { name: 'Egg', price: '250', image: '/images/boiled egg.jpg' },
+      { name: 'Mushroom', price: '200', image: '/images/mushroom soup.jpg' },
+      { name: 'Paneer', price: '230', image: '/images/paneer pakauda.jpg' },
     ],
     'Taas': [
-      { name: 'Chicken Taas', price: '270', image: '/images/chicken-roast.png' },
-      { name: 'Mutton Taas', price: '350', image: '/images/mutton.png' },
+      { name: 'Chicken Taas', price: '300', image: '/images/chicken-roast.png' },
+      { name: 'Mutton Taas', price: '450', image: '/images/mutton.png' },
+      { name: 'Pork Taas', price: '400', image: '/images/pork.png' },
     ],
     'Sadeko': [
-      { name: 'Peanuts Sadeko', price: '120', image: '/images/pakoda.png' },
+      { name: 'Peanuts Sadeko', price: '180', image: '/images/pakoda.png' },
+      { name: 'Papad Sadeko', price: '160', image: '/images/pakoda.png' },
       { name: 'Chicken (Boil)', price: '300', image: '/images/chicken-roast.png' },
       { name: 'Chicken (Fry)', price: '320', image: '/images/chicken-roast.png' },
       { name: 'Chicken (Sadeko)', price: '350', image: '/images/chicken-roast.png' },
       { name: 'Mutton (Boil)', price: '400', image: '/images/mutton.png' },
       { name: 'Mutton (Fry)', price: '450', image: '/images/mutton.png' },
       { name: 'Mutton (Sadeko)', price: '500', image: '/images/mutton.png' },
+      { name: 'Buff Sadeko', price: '130', image: '/images/buff sekuwa.jpg' },
       { name: 'Bhatmas (Plain)', price: '100', image: '/images/pakoda.png' },
       { name: 'Bhatmas (Sadeko)', price: '100', image: '/images/pakoda.png' },
-      { name: 'Mushroom Sadeko', price: '200', image: '/images/pakoda.png' },
+      { name: 'Mushroom Sadeko', price: '250', image: '/images/pakoda.png' },
       { name: 'Aalu Sadeko', price: '120', image: '/images/alu-fry.png' },
+      { name: 'Cucumber Sadeko', price: '100', image: '/images/green salad.jpg' },
       { name: 'Wai Wai Sadeko', price: '100', image: '/images/chowmin.png' },
     ],
   }
@@ -624,7 +688,7 @@ export default function MenuApp() {
             </div>
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#2f6f68]">{greeting}</p>
-              <h1 className="text-2xl font-black sm:text-3xl">Pool Restaurant</h1>
+              <h1 className="text-2xl font-black sm:text-3xl">Khukuri Restaurant & Bar</h1>
               <p className="text-xs font-medium text-[#7b8581]">{currentDate} · {currentTime}</p>
             </div>
           </div>
@@ -765,7 +829,7 @@ export default function MenuApp() {
       {/* Payment Modal */}
       {showPaymentModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#202826]/50 p-4 backdrop-blur-sm animate-fade-in">
-          <div className="w-full max-w-md overflow-hidden rounded-[28px] bg-[#f4f5f4] shadow-2xl animate-scale-up">
+          <div className="w-full max-w-2xl overflow-hidden rounded-[28px] bg-[#f4f5f4] shadow-2xl animate-scale-up">
             <div className="relative bg-[#e9eeeb] px-8 py-7">
               <div className="absolute right-0 top-0 h-full w-36 overflow-hidden opacity-20">
                 <Image
@@ -789,29 +853,29 @@ export default function MenuApp() {
 
             {/* QR Code Display */}
             <div className="px-8 py-7">
-              <div className="mb-6 flex justify-center">
-                <div className="rounded-[24px] bg-white p-5 shadow-[0_24px_40px_rgba(35,45,43,0.08)]">
-                  <div className="flex h-48 w-48 items-center justify-center rounded-[18px] border border-[#dce3df] bg-[#f9faf9]">
-                    <div className="text-center">
-                      <p className="mb-3 text-sm font-black uppercase tracking-[0.18em] text-[#2f6f68]">QR Code</p>
-                      <div className="mx-auto flex h-28 w-28 items-center justify-center rounded-2xl bg-[#e9eeeb] text-[#2f6f68]">
-                        <Smartphone className="h-10 w-10" />
-                      </div>
+              <div className="mb-6 grid gap-4 sm:grid-cols-2">
+                {paymentQrs.map((qr) => (
+                  <div key={qr.src} className="rounded-[24px] bg-white p-4 shadow-[0_24px_40px_rgba(35,45,43,0.08)]">
+                    <p className="mb-3 text-center text-xs font-black uppercase tracking-[0.18em] text-[#2f6f68]">{qr.name}</p>
+                    <div className="relative mx-auto aspect-square w-full max-w-56 overflow-hidden rounded-[18px] border border-[#dce3df] bg-[#f9faf9]">
+                      <Image
+                        src={qr.src}
+                        alt={qr.name}
+                        fill
+                        sizes="224px"
+                        className="object-contain p-2"
+                      />
                     </div>
+                    <a
+                      href={qr.src}
+                      download
+                      className="mt-4 flex items-center justify-center gap-2 rounded-full bg-[#2f6f68] py-3 text-sm font-bold text-white shadow-lg shadow-[#2f6f68]/20 transition hover:bg-[#285f59]"
+                    >
+                      <Download className="h-4 w-4" />
+                      Download
+                    </a>
                   </div>
-                </div>
-              </div>
-
-              {/* Action Buttons */}
-              <div className="mb-4 grid grid-cols-2 gap-3">
-                <button className="flex items-center justify-center gap-2 rounded-full bg-[#2f6f68] py-3 font-bold text-white shadow-lg shadow-[#2f6f68]/20 transition hover:bg-[#285f59]">
-                  <Download className="h-4 w-4" />
-                  Download
-                </button>
-                <button className="flex items-center justify-center gap-2 rounded-full border border-[#dce3df] bg-white py-3 font-bold text-[#2f6f68] transition hover:border-[#2f6f68]/40">
-                  <Smartphone className="h-4 w-4" />
-                  Scan
-                </button>
+                ))}
               </div>
 
               {/* Close Button */}

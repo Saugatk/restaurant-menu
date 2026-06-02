@@ -7,8 +7,8 @@ const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'pool menu',
-  description: 'Created with love',
+  title: 'Khukuri Restaurant & Bar Menu',
+  description: 'Khukuri Restaurant & Bar menu',
   generator: 'saugat karki',
   icons: {
     icon: [
