@@ -2,336 +2,20 @@
 
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
-import {
-  Apple,
-  Banana,
-  Beef,
-  Bean,
-  Beer,
-  CakeSlice,
-  Candy,
-  Carrot,
-  ChefHat,
-  Cherry,
-  Coffee,
-  CookingPot,
-  Cookie,
-  CupSoda,
-  Donut,
-  Download,
-  Drumstick,
-  EggFried,
-  Fish,
-  Flame,
-  GlassWater,
-  Ham,
-  Heart,
-  IceCreamBowl,
-  Leaf,
-  Martini,
-  Milk,
-  Pizza,
-  Popcorn,
-  Salad,
-  Sandwich,
-  Search,
-  Smartphone,
-  Soup,
-  Star,
-  Utensils,
-  UtensilsCrossed,
-  Vegan,
-  Wheat,
-  Wine,
-} from 'lucide-react'
-
-const imageFiles = [
-  'Buff Chicken Fried Rice.jpg',
-  'Buff Khaja Set.jpg',
-  'Chicken Chilly.jpg',
-  'Fried Buff Momo.jpg',
-  'Fruit Salad small plate.jpg',
-  'aalu fry.jpg',
-  'aalu sadeko.jpg',
-  'banana lassi.jpg',
-  'bhatmas sadeko.jpg',
-  'black coffee.jpg',
-  'black tea.jpg',
-  'boiled egg.jpg',
-  'buff kathi roll.jpg',
-  'buff khote momo.jpg',
-  'buff meatballs.jpg',
-  'buff momo plate.jpg',
-  'buff momo.jpg',
-  'buff pizza.jpg',
-  'buff pizza.jpeg',
-  'buff sekuwa.jpg',
-  'buff steam momo.jpg',
-  'cheese pizza.jpg',
-  'chicken boil.jpg',
-  'chicken burger.jpg',
-  'chicken choila.jpg',
-  'chicken chowmin.jpg',
-  'chicken chowmin.jpeg',
-  'chicken drumstick(6 pcs).jpg',
-  'chicken fried rice.jpg',
-  'chicken kathi roll.jpg',
-  'chicken khaja set.jpg',
-  'chicken khote momo.jpg',
-  'chicken leg piece fry(2 pcs).jpg',
-  'chicken pizza.jpg',
-  'chicken roast.jpg',
-  'chicken sadeko.jpg',
-  'chicken sadeko plate.jpg',
-  'chicken sausage .jpg',
-  'chicken sekuwa.jpg',
-  'chicken soup.jpg',
-  'chicken taas.jpg',
-  'chicken thakali khana.jpg',
-  'chicken thukpa.jpg',
-  'chicken.jpg',
-  'chilly momo.jpg',
-  'chinese fried rice.jpg',
-  'coke_fanta_dew_sprite.jpg',
-  'cold coffee.jpg',
-  'dry fruit lassi.jpg',
-  'egg biryani.jpg',
-  'egg fried rice.jpg',
-  'egg kathi roll.jpg',
-  'french fry.jpg',
-  'fruit salad large plate.jpeg',
-  'fry omelette.jpg',
-  'fry veg momo.jpg',
-  'green salad large plate.jpeg',
-  'green salad.jpg',
-  'kaju fry.jpg',
-  'lemon soda.jpg',
-  'lemon tea.jpg',
-  'mango juice.jpg',
-  'mango lassi.jpg',
-  'masala omlet.jpg',
-  'milk tea.jpg',
-  'min.water.jpg',
-  'mix chowmin.jpg',
-  'mixed pizza.jpg',
-  'mixed thukpa.jpg',
-  'mushroom pakoda.jpg',
-  'mushroom pizza.jpg',
-  'mushroom sadeko.jpg',
-  'mushroom soup.jpg',
-  'mutton biryani.jpg',
-  'mutton chilly.jpg',
-  'mushroom chilly.jpg',
-  'mutton gravy.jpg',
-  'mutton khaja set.jpg',
-  'mutton khana set.jpg',
-  'mutton khana thali set.jpg',
-  'mutton sadeko.jpg',
-  'mutton sekuwa.jpg',
-  'mutton soup.jpg',
-  'mutton taas.jpg',
-  'mutton thukpa.jpg',
-  'orange juice.jpg',
-  'paneer kathi roll.jpg',
-  'paneer pakauda.jpg',
-  'papad(fry,dry,masala).jpg',
-  'peanut sadeko.jpg',
-  'peanuts sadeko.jpg',
-  'php9S4dVoAM.webp',
-  'plain lassi.jpg',
-  'plain omlet.webp',
-  'pork boil.jpg',
-  'pork chilly.jpg',
-  'pork choila.jpg',
-  'pork fry.jpg',
-  'pork sadeko.jpg',
-  'pork tawa.jpg',
-  'potato chilly.jpg',
-  'pouch egg.jpg',
-  'russian salad large plate.jpg',
-  'russian salad small plate.jpg',
-  'soda water.jpg',
-  'sweet lassi.jpg',
-  'veg biryani.jpg',
-  'veg burger.jpg',
-  'veg chowmin.jpg',
-  'veg chowmin.webp',
-  'veg fried rice.jpg',
-  'veg kathi roll.jpg',
-  'veg khaja set.jpg',
-  'veg momo.jpg',
-  'veg pakauda.jpg',
-  'veg pizza.jpg',
-  'veg soup.jpg',
-  'veg thakali khana set.jpg',
-  'veg thukpa.jpg',
-  'veg-chilli-momo-.jpg',
-  'wai wai sadeko.png',
-] as const
-
-const imageAliases: Record<string, string> = {
-  'Special|Chicken Momo': 'chicken khote momo',
-  'Special|Biryani Chicken': 'chicken',
-  'Special|Chowmin Chicken': 'chicken chowmin',
-  'Special|Pizza Chicken': 'chicken pizza',
-  'Tea & Coffee|Milk Coffee': 'black coffee',
-  'Tea & Coffee|Hot Lemon': 'lemon tea',
-  'Soft Drinks|Coke/Fanta/Sprite/Dew/Pepsi/Slice': 'coke fanta dew sprite',
-  'Starter|Papad (dry/masala/fry)': 'papad fry dry masala',
-  'Starter|Peanut (plain/sadeko)': 'peanut sadeko',
-  'Starter|Kaju (plain/fry)': 'kaju fry',
-  'Veg Items|Veg Pakoda': 'veg pakauda',
-  'Veg Items|Paneer Pakoda': 'paneer pakauda',
-  'Non Veg Items (Chicken)|Chicken Chilly (boneless/with bone)': 'chicken chilly',
-  'Non Veg Items (Chicken)|Chicken Meat Ball': 'buff meatballs',
-  'Non Veg Items (Chicken)|Chicken Leg Piece Fry (2pcs)': 'chicken leg piece fry 2 pcs',
-  'Non Veg Items (Chicken)|Chicken 65 (per plate)': 'chicken',
-  'Momos|Veg Fry': 'fry veg momo',
-  'Momos|Veg Chilly': 'veg chilli momo',
-  'Momos|Buff C.': 'buff steam momo',
-  'Momos|Buff Fry': 'fried buff momo',
-  'Momos|Buff Khote': 'buff khote momo',
-  'Momos|Buff Chilly': 'chilly momo',
-  'Momos|Chicken Momo': 'chicken khote momo',
-  'Momos|Chicken C.': 'chicken khote momo',
-  'Momos|Chicken Fry': 'chicken khote momo',
-  'Momos|Chicken Khote': 'chicken khote momo',
-  'Momos|Chicken Chilly': 'chilly momo',
-  'Chowmin|Buff': 'mix chowmin',
-  'Chowmin|Egg': 'mix chowmin',
-  'Chowmin|Mixed': 'mix chowmin',
-  'Thukpa|Chicken': 'chicken thukpa',
-  'Nepali Thakali Khana|Veg': 'veg thakali khana set',
-  'Nepali Thakali Khana|Chicken': 'chicken thakali khana',
-  'Nepali Thakali Khana|Mutton': 'mutton khana thali set',
-  'Nepali Thakali Khana|Egg': 'veg thakali khana set',
-  'Nepali Thakali Khana|Fish': 'mutton khana set',
-  'Kati Roll|Mushroom': 'veg kathi roll',
-  'Burger|Buff': 'chicken burger',
-  'Soup|Mixed': 'mushroom soup',
-  'Salad|Fruit Salad (Small Plate)': 'fruit salad small plate',
-  'Lassi|Plain': 'plain lassi',
-  'Lassi|Sweet': 'sweet lassi',
-  'Lassi|Banana': 'banana lassi',
-  'Lassi|Mango': 'mango lassi',
-  'Lassi|Dry Fruit': 'dry fruit lassi',
-  'Milk Shake|Vanilla': 'php9s4dvoam',
-  'Milk Shake|Chocolate': 'php9s4dvoam',
-  'Milk Shake|Strawberry': 'php9s4dvoam',
-  'Milk Shake|Oreo Milkshake': 'php9s4dvoam',
-  'Fried Rice|Veg Fry Rice': 'veg fried rice',
-  'Fried Rice|Egg Fry Rice': 'egg fried rice',
-  'Fried Rice|Buff Fry Rice': 'buff chicken fried rice',
-  'Fried Rice|Chicken Fry Rice': 'chicken fried rice',
-  'Fried Rice|Mix Fry Rice': 'chinese fried rice',
-  'Omelette Egg|Plain Omelette': 'plain omlet',
-  'Omelette Egg|Masala Omelette': 'masala omlet',
-  'Omelette Egg|Fry Egg': 'fry omelette',
-  'Omelette Egg|Poach Egg': 'pouch egg',
-  'Mutton|Mutton Grevy': 'mutton gravy',
-  'Sekuwa|Chicken Sekuwa': 'chicken sekuwa',
-  'Sadeko|Chicken (Boil)': 'chicken boil',
-  'Sadeko|Chicken (Fry)': 'chicken roast',
-  'Sadeko|Chicken (Sadeko)': 'chicken sadeko',
-  'Sadeko|Mutton (Boil)': 'mutton gravy',
-  'Sadeko|Mutton (Fry)': 'mutton taas',
-  'Sadeko|Mutton (Sadeko)': 'mutton sadeko',
-  'Sadeko|Bhatmas (Plain)': 'bhatmas sadeko',
-  'Sadeko|Bhatmas (Sadeko)': 'bhatmas sadeko',
-  'Sadeko|Aalu Sadeko': 'aalu sadeko',
-}
-
-const categoryImageSuffix: Record<string, string> = {
-  Chowmin: 'chowmin',
-  Thukpa: 'thukpa',
-  'Kati Roll': 'kathi roll',
-  Pizza: 'pizza',
-  Burger: 'burger',
-  Biryani: 'biryani',
-  Soup: 'soup',
-}
+import { Download, Search, Smartphone, X, Phone, MessageCircle } from 'lucide-react'
 
 const paymentQrs = [
   { name: 'Payment QR 1', src: '/images/qr1.jpeg' },
   { name: 'Payment QR 2', src: '/images/qr2.jpeg' },
 ]
 
-const normalizeImageName = (value: string) =>
-  value
-    .toLowerCase()
-    .replace(/\.(jpg|jpeg|png|webp|svg)$/, '')
-    .replace(/&/g, ' and ')
-    .replace(/[^a-z0-9]+/g, ' ')
-    .trim()
-    .replace(/\s+/g, ' ')
-
-const imageByName = new Map(imageFiles.map((file) => [normalizeImageName(file), file]))
-
-const getMenuImage = (category: string, name: string, fallback: string) => {
-  const withoutDetails = normalizeImageName(name.replace(/\([^)]*\)/g, ''))
-  const suffix = categoryImageSuffix[category]
-  const candidates = [
-    imageAliases[`${category}|${name}`],
-    normalizeImageName(name),
-    withoutDetails,
-    suffix ? `${withoutDetails} ${suffix}` : undefined,
-  ].filter(Boolean) as string[]
-
-  const match = candidates.map((candidate) => imageByName.get(candidate)).find(Boolean)
-  return match ? `/images/${match}` : fallback
-}
-
-const getItemRating = (category: string, name: string) => {
-  const seed = `${category}-${name}`.split('').reduce((sum, char) => sum + char.charCodeAt(0), 0)
-  return (4.2 + (seed % 8) / 10).toFixed(1)
-}
-
-const categoryIcons = [
-  Utensils,
-  Coffee,
-  CupSoda,
-  ChefHat,
-  Salad,
-  Drumstick,
-  CookingPot,
-  Wheat,
-  Soup,
-  Sandwich,
-  Pizza,
-  Beef,
-  EggFried,
-  UtensilsCrossed,
-  Fish,
-  IceCreamBowl,
-  Milk,
-  GlassWater,
-  Wine,
-  CakeSlice,
-  Ham,
-  Candy,
-  Heart,
-  Apple,
-  Banana,
-  Bean,
-  Beer,
-  Carrot,
-  Cherry,
-  Cookie,
-  Donut,
-  Flame,
-  Leaf,
-  Martini,
-  Popcorn,
-  Vegan,
-]
+const WHATSAPP_NUMBER = '+9779855073719'
 
 export default function MenuApp() {
-  const [selectedCategory, setSelectedCategory] = useState('Special')
   const [searchTerm, setSearchTerm] = useState('')
   const [currentTime, setCurrentTime] = useState<string>('')
   const [currentDate, setCurrentDate] = useState<string>('')
   const [greeting, setGreeting] = useState<string>('')
-  const [isSearching, setIsSearching] = useState(false)
   const [showPaymentModal, setShowPaymentModal] = useState(false)
 
   useEffect(() => {
@@ -658,281 +342,380 @@ export default function MenuApp() {
     return allItems
   }
 
-  const filteredItems = isSearching || searchTerm
-    ? getAllItems().filter(item =>
-        item.name.toLowerCase().includes(searchTerm.toLowerCase())
-      )
-    : (menuData[selectedCategory as keyof typeof menuData]?.map((item, idx) => ({ 
-        ...item, 
-        category: selectedCategory,
-        popular: undefined 
-      })) || [])
+  const allItems = getAllItems()
+  const normalizedSearch = searchTerm.trim().toLowerCase()
+  const visibleSections = categories
+    .map((category) => {
+      const items = menuData[category as keyof typeof menuData].filter((item) => {
+        if (!normalizedSearch) return true
 
+        return `${category} ${item.name} ${item.price}`.toLowerCase().includes(normalizedSearch)
+      })
+
+      return { category, items }
+    })
+    .filter((section) => section.items.length > 0)
+  const visibleItemCount = visibleSections.reduce((total, section) => total + section.items.length, 0)
+  const featuredImages = [
+    '/images/chicken roast.jpg',
+    '/images/chicken khote momo.jpg',
+    '/images/mutton khana thali set.jpg',
+    '/images/mixed pizza.jpg',
+    '/images/mango lassi.jpg',
+  ]
   return (
-    <div className="min-h-screen overflow-hidden bg-[#f4f5f4] text-[#222827]">
-      <header className="relative bg-[#e9eeeb]">
-        <div className="absolute inset-y-0 right-0 hidden w-1/2 overflow-hidden md:block">
-          <Image
-            src="/images/chicken roast.jpg"
-            alt=""
-            fill
-            priority
-            sizes="50vw"
-            className="object-cover opacity-20"
-          />
-        </div>
-        <div className="relative mx-auto flex max-w-7xl items-center justify-between px-5 py-6 sm:px-8 lg:px-12">
-          <div className="flex items-center gap-3">
-            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#2f6f68] text-white shadow-lg shadow-[#2f6f68]/20">
-              <Utensils className="h-5 w-5" />
-            </div>
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#2f6f68]">{greeting}</p>
-              <h1 className="text-2xl font-black sm:text-3xl">Khukuri Restaurant & Bar</h1>
-              <p className="text-xs font-medium text-[#7b8581]">{currentDate} · {currentTime}</p>
-            </div>
-          </div>
-          <button
-            onClick={() => setShowPaymentModal(true)}
-            className="inline-flex h-11 items-center justify-center gap-2 rounded-full bg-[#2f6f68] px-5 text-sm font-bold text-white shadow-xl shadow-[#2f6f68]/20 transition hover:bg-[#285f59]"
-          >
-            <Smartphone className="h-4 w-4" />
-            Pay
-          </button>
-        </div>
-      </header>
+    <div className="min-h-screen overflow-x-hidden bg-[#dce8f0] px-3 py-4 text-[#111315] sm:px-6 sm:py-8 lg:px-10">
+      <div className="mx-auto max-w-6xl overflow-hidden bg-[#f0f6fa] shadow-[0_30px_80px_rgba(17,19,21,0.10)] ring-1 ring-black/5">
+        <header className="px-5 pb-8 pt-6 sm:px-10 lg:px-16 lg:pb-12 lg:pt-10">
+          <nav className="flex flex-wrap items-center justify-between gap-5">
+            <a href="#top" className="flex h-9 items-center gap-2">
+              <Image
+                src="/images/logo.jpeg"
+                alt="Khukuri Restaurant & Bar"
+                width={36}
+                height={36}
+                className="h-9 w-9 rounded-full object-cover border border-black/10"
+              />
+            </a>
 
-      <main className="mx-auto max-w-7xl px-5 py-10 sm:px-8 lg:px-12">
-        <section className="mb-10 grid gap-6 lg:grid-cols-[minmax(300px,0.85fr)_minmax(0,1.6fr)] lg:items-end">
-          <div>
-            <h2 className="text-3xl font-black tracking-tight sm:text-4xl">Our Popular Menu</h2>
-            <p className="mt-3 max-w-xl text-sm leading-6 text-[#7b8581]">
-              Fresh dishes, drinks, khaja sets and restaurant favorites from our full menu.
-            </p>
-          </div>
+            <div className="hidden items-center gap-8 text-[10px] font-semibold uppercase tracking-[0.12em] text-[#111315] md:flex">
+              <a className="transition hover:opacity-50" href="#menu">Menu</a>
+              <a className="transition hover:opacity-50" href="#special">Special</a>
+              <a className="transition hover:opacity-50" href="#payment">Payment</a>
+              <a className="transition hover:opacity-50" href="#footer">Contact</a>
+              <a
+                className="inline-flex items-center gap-1.5 transition hover:opacity-50"
+                href={`https://wa.me/${WHATSAPP_NUMBER.replace(/[^0-9]/g, '')}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <MessageCircle className="h-3.5 w-3.5" />
+                WhatsApp
+              </a>
+            </div>
 
-          <div className="grid min-w-0 gap-4">
-            <div className="relative">
-              <Search className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[#95a09b]" />
-              <input
-                type="text"
-                placeholder="Search menu"
-                value={searchTerm}
-                onChange={(e) => {
-                  setSearchTerm(e.target.value)
-                  setIsSearching(e.target.value.length > 0)
-                }}
-                onFocus={() => setIsSearching(true)}
-                onBlur={() => searchTerm === '' && setIsSearching(false)}
-                className="h-12 w-full rounded-full border border-[#e3e6e4] bg-white pl-11 pr-5 text-sm font-semibold text-[#26302e] shadow-sm outline-none transition focus:border-[#2f6f68] focus:ring-4 focus:ring-[#2f6f68]/10"
+            <div className="flex items-center gap-4">
+              <a
+                href={`https://wa.me/${WHATSAPP_NUMBER.replace(/[^0-9]/g, '')}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hidden items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.12em] text-[#111315] transition hover:opacity-50 sm:inline-flex"
+              >
+                <Phone className="h-3.5 w-3.5" />
+                Contact
+              </a>
+              <button
+                onClick={() => setShowPaymentModal(true)}
+                className="inline-flex h-9 items-center gap-2 border border-[#111315] px-5 text-[10px] font-semibold uppercase tracking-[0.12em] text-[#111315] transition hover:bg-[#111315] hover:text-white focus:outline-none"
+              >
+                <Smartphone className="h-3.5 w-3.5" />
+                Pay
+              </button>
+            </div>
+          </nav>
+
+          <section id="top" className="pt-10 text-center sm:pt-14">
+            <div className="mx-auto mb-5 flex justify-center">
+              <Image
+                src="/images/logo.jpeg"
+                alt="Khukuri Restaurant & Bar Logo"
+                width={80}
+                height={80}
+                className="h-20 w-20 rounded-full object-cover shadow-md ring-1 ring-black/10"
               />
             </div>
-
-            {!isSearching && (
-              <div className="flex gap-3 overflow-x-auto pb-2">
-                {categories.map((cat, idx) => {
-                  const CategoryIcon = categoryIcons[idx % categoryIcons.length]
-                  const isSelected = selectedCategory === cat
-
-                  return (
-                    <button
-                      key={cat}
-                      onClick={() => setSelectedCategory(cat)}
-                      title={cat}
-                      aria-label={cat}
-                      className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-md border shadow-sm transition ${
-                        isSelected
-                          ? 'border-[#2f6f68] bg-[#2f6f68] text-white shadow-[#2f6f68]/20'
-                          : 'border-[#ecefed] bg-white text-[#9ba5a0] hover:border-[#2f6f68]/40 hover:text-[#2f6f68]'
-                      }`}
-                    >
-                      <CategoryIcon className="h-5 w-5" />
-                    </button>
-                  )
-                })}
-              </div>
-            )}
-          </div>
-        </section>
-
-        {isSearching && searchTerm && (
-          <p className="mb-8 text-sm font-semibold text-[#64716d]">
-            Search results for <span className="text-[#2f6f68]">{searchTerm}</span> · {filteredItems.length} item{filteredItems.length !== 1 ? 's' : ''}
-          </p>
-        )}
-
-        {!isSearching && (
-          <div className="mb-8 flex items-center justify-between">
-            <p className="text-sm font-black uppercase tracking-[0.22em] text-[#2f6f68]">{selectedCategory}</p>
-            <p className="text-sm font-semibold text-[#9aa39f]">{filteredItems.length} items</p>
-          </div>
-        )}
-
-        <div
-          key={`${selectedCategory}-${searchTerm}`}
-          className="grid grid-cols-1 gap-x-10 gap-y-16 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
-        >
-          {filteredItems.map((item, idx) => {
-            const imageSrc = getMenuImage(item.category, item.name, item.image)
-            const rating = getItemRating(item.category, item.name)
-
-            return (
-              <article key={`${item.category}-${item.name}`} className="group relative pt-14">
-                <div className="absolute left-7 top-0 z-10 h-28 w-28 overflow-hidden rounded-full bg-[#edf0ee] shadow-xl shadow-black/10 ring-8 ring-[#f4f5f4]">
-                  <Image
-                    src={imageSrc}
-                    alt={item.name}
-                    fill
-                    priority={idx < 4}
-                    sizes="112px"
-                    className="object-cover transition duration-300 group-hover:scale-105"
-                  />
-                </div>
-
-                <div className="min-h-44 rounded-[28px] bg-white px-6 pb-6 pt-16 shadow-[0_24px_40px_rgba(35,45,43,0.08)] transition duration-300 group-hover:-translate-y-1 group-hover:shadow-[0_28px_50px_rgba(35,45,43,0.12)]">
-                  <div className="mb-4 flex items-start justify-between gap-4">
-                    <button
-                      type="button"
-                      aria-label={`Save ${item.name}`}
-                      className="mt-1 flex h-8 w-8 items-center justify-center rounded-full text-[#a5aeaa] transition hover:bg-[#f0f4f2] hover:text-[#2f6f68]"
-                    >
-                      <Heart className="h-4 w-4" />
-                    </button>
-                    <div className="flex items-center gap-1 text-xs font-black text-[#252b2a]">
-                      {rating}
-                      <Star className="h-3.5 w-3.5 fill-[#f5d74f] text-[#f5d74f]" />
-                    </div>
-                  </div>
-
-                  <h3 className="min-h-10 text-sm font-black leading-5 text-[#202826]">{item.name}</h3>
-                  <p className="mt-1 min-h-5 truncate text-xs font-semibold text-[#a1aaa6]">{item.category}</p>
-
-                  <div className="mt-6 flex items-center justify-between gap-4">
-                    <div className="h-2 w-20 rounded-full bg-[#2f6f68]" />
-                    <p className="whitespace-nowrap text-sm font-black text-[#202826]">Rs {item.price}</p>
-                  </div>
-                </div>
-              </article>
-            )
-          })}
-        </div>
-
-        {filteredItems.length === 0 && (
-          <div className="py-16 text-center">
-            <p className="text-base font-black text-[#2f6f68]">
-              {isSearching ? `No items found for "${searchTerm}"` : `No items available in ${selectedCategory}`}
+            <p className="mb-4 text-[10px] font-semibold uppercase tracking-[0.34em] text-[#111315]">
+              Khukuri Restaurant & Bar
             </p>
-          </div>
-        )}
-      </main>
+            <h1 className="font-serif text-6xl font-light uppercase leading-none text-[#111315] sm:text-7xl lg:text-8xl">
+              Menu
+            </h1>
+            <p className="mx-auto mt-5 max-w-xl text-sm leading-7 text-[#111315]/60">
+              Complete single-page menu with live search, clear pricing, and QR payment options.
+            </p>
+          </section>
+        </header>
 
-      {/* Payment Modal */}
-      {showPaymentModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#202826]/50 p-4 backdrop-blur-sm animate-fade-in">
-          <div className="w-full max-w-2xl overflow-hidden rounded-[28px] bg-[#f4f5f4] shadow-2xl animate-scale-up">
-            <div className="relative bg-[#e9eeeb] px-8 py-7">
-              <div className="absolute right-0 top-0 h-full w-36 overflow-hidden opacity-20">
-                <Image
-                  src="/images/chicken roast.jpg"
-                  alt=""
-                  fill
-                  sizes="144px"
-                  className="object-cover"
-                />
-              </div>
-              <div className="relative flex items-center gap-3">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#2f6f68] text-white shadow-lg shadow-[#2f6f68]/20">
-                  <Smartphone className="h-5 w-5" />
-                </div>
-                <div>
-                  <h2 className="text-2xl font-black text-[#202826]">Payment</h2>
-                  <p className="text-sm font-semibold text-[#7b8581]">Scan or download QR code to pay</p>
-                </div>
-              </div>
-            </div>
-
-            {/* QR Code Display */}
-            <div className="px-8 py-7">
-              <div className="mb-6 grid gap-4 sm:grid-cols-2">
-                {paymentQrs.map((qr) => (
-                  <div key={qr.src} className="rounded-[24px] bg-white p-4 shadow-[0_24px_40px_rgba(35,45,43,0.08)]">
-                    <p className="mb-3 text-center text-xs font-black uppercase tracking-[0.18em] text-[#2f6f68]">{qr.name}</p>
-                    <div className="relative mx-auto aspect-square w-full max-w-56 overflow-hidden rounded-[18px] border border-[#dce3df] bg-[#f9faf9]">
-                      <Image
-                        src={qr.src}
-                        alt={qr.name}
-                        fill
-                        sizes="224px"
-                        className="object-contain p-2"
-                      />
+        <main id="menu" className="px-5 pb-12 sm:px-10 lg:px-16">
+          <section className="grid gap-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(320px,1fr)] lg:items-center">
+            <div id="special" className="min-w-0">
+              <p className="mb-4 text-[10px] font-semibold uppercase tracking-[0.28em] text-[#111315]/60">
+                Featured
+              </p>
+              <h2 className="font-serif text-3xl font-light uppercase leading-tight text-[#111315] sm:text-4xl">
+                House Specials
+              </h2>
+              <div className="mt-7 space-y-4">
+                {menuData.Special.slice(0, 5).map((item) => (
+                  <div key={item.name} className="grid grid-cols-[minmax(0,1fr)_auto] items-start gap-4 border-b border-black/10 pb-3">
+                    <div className="min-w-0">
+                      <p className="text-sm font-semibold leading-6 text-[#111315]">{item.name}</p>
+                      <p className="text-xs uppercase tracking-[0.18em] text-[#111315]/40">Special</p>
                     </div>
-                    <a
-                      href={qr.src}
-                      download
-                      className="mt-4 flex items-center justify-center gap-2 rounded-full bg-[#2f6f68] py-3 text-sm font-bold text-white shadow-lg shadow-[#2f6f68]/20 transition hover:bg-[#285f59]"
-                    >
-                      <Download className="h-4 w-4" />
-                      Download
-                    </a>
+                    <p className="whitespace-nowrap text-sm font-semibold text-[#111315]">Rs {item.price}</p>
                   </div>
                 ))}
               </div>
+            </div>
 
-              {/* Close Button */}
+            <div className="relative mx-auto aspect-[1.35/1] w-full max-w-sm overflow-hidden bg-[#e4eff6]">
+              <div className="absolute inset-4 z-10 rounded-[50%] border border-black/10" />
+              <Image
+                src="/images/chicken roast.jpg"
+                alt="Chicken Roast"
+                fill
+                priority
+                sizes="(min-width: 1024px) 380px, 70vw"
+                className="object-cover transition duration-700 hover:scale-105"
+              />
+            </div>
+          </section>
+
+          <section className="sticky top-0 z-20 -mx-5 mt-12 border-y border-black/10 bg-[#f0f6fa]/95 px-5 py-4 backdrop-blur sm:-mx-10 sm:px-10 lg:-mx-16 lg:px-16">
+            <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center">
+              <div className="relative min-w-0">
+                <Search className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[#111315]/40" />
+                <input
+                  type="search"
+                  placeholder="Search dishes, drinks, categories, or prices"
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="h-12 w-full border border-black/10 bg-white px-11 text-sm font-medium text-[#111315] outline-none transition placeholder:text-[#111315]/30 focus:border-[#111315]/30 focus:ring-4 focus:ring-black/5"
+                />
+              </div>
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#111315]/50">
+                {normalizedSearch ? `${visibleItemCount} results` : `${allItems.length} items`}
+              </p>
+            </div>
+
+            <div className="mt-4 flex gap-2 overflow-x-auto pb-1">
+              {categories.map((category) => (
+                <a
+                  key={category}
+                  href={`#${category.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}
+                  className="shrink-0 border border-black/10 bg-white/60 px-3 py-2 text-[10px] font-semibold uppercase tracking-[0.12em] text-[#111315] transition hover:bg-[#111315] hover:text-white hover:border-[#111315]"
+                >
+                  {category}
+                </a>
+              ))}
+            </div>
+          </section>
+
+          {normalizedSearch && (
+            <p className="mt-8 text-sm font-medium text-[#111315]/60">
+              Showing matches for <span className="font-semibold text-[#111315]">{searchTerm}</span>
+            </p>
+          )}
+
+          <section className="mt-10 grid gap-x-14 gap-y-16 lg:grid-cols-2">
+            {visibleSections.map((section, index) => {
+              const showImage = !normalizedSearch && index % 6 === 1
+              const imageSrc = featuredImages[index % featuredImages.length]
+
+              return (
+                <article
+                  id={section.category.toLowerCase().replace(/[^a-z0-9]+/g, '-')}
+                  key={section.category}
+                  className={`scroll-mt-40 ${showImage ? 'lg:grid lg:grid-cols-[0.92fr_1fr] lg:items-center lg:gap-8' : ''}`}
+                >
+                  {showImage && (
+                    <div className="relative mb-7 aspect-square max-w-[280px] mx-auto overflow-hidden bg-[#e4eff6] lg:mb-0">
+                      <div className="absolute inset-4 z-10 rounded-[50%] border border-black/10" />
+                      <Image
+                        src={imageSrc}
+                        alt=""
+                        fill
+                        sizes="(min-width: 1024px) 220px, 60vw"
+                        className="object-cover"
+                      />
+                    </div>
+                  )}
+
+                  <div className="min-w-0">
+                    <div className="mb-5 flex items-end justify-between gap-4">
+                      <h2 className="font-serif text-2xl font-light uppercase leading-tight text-[#111315] sm:text-3xl">
+                        {section.category}
+                      </h2>
+                      <span className="whitespace-nowrap text-[10px] font-semibold uppercase tracking-[0.18em] text-[#111315]/40">
+                        {section.items.length} items
+                      </span>
+                    </div>
+
+                    <div className="space-y-3">
+                      {section.items.map((item) => (
+                        <div
+                          key={`${section.category}-${item.name}`}
+                          className="group grid grid-cols-[minmax(0,1fr)_auto] items-start gap-4 border-b border-black/8 pb-3 transition duration-300 hover:border-black/20"
+                        >
+                          <div className="min-w-0">
+                            <h3 className="text-sm font-medium leading-6 text-[#111315] transition group-hover:text-[#111315]/70">
+                              {item.name}
+                            </h3>
+                          </div>
+                          <p className="max-w-[5.75rem] text-right text-xs font-semibold leading-5 text-[#111315] [overflow-wrap:anywhere] sm:max-w-[8.5rem] sm:text-sm sm:leading-6">
+                            Rs {item.price}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </article>
+              )
+            })}
+          </section>
+
+          {visibleSections.length === 0 && (
+            <div className="my-16 border border-black/10 bg-white px-6 py-12 text-center">
+              <p className="font-serif text-2xl text-[#111315]">No menu items found</p>
+              <p className="mt-2 text-sm text-[#111315]/50">Try a different dish, drink, category, or price.</p>
+            </div>
+          )}
+
+          <section id="payment" className="mt-16 grid gap-8 border-t border-black/10 pt-10 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center">
+            <div className="flex items-start gap-5">
+              <Image
+                src="/images/logo.jpeg"
+                alt="Khukuri Restaurant & Bar"
+                width={48}
+                height={48}
+                className="hidden h-12 w-12 shrink-0 rounded-full object-cover ring-1 ring-black/10 sm:block"
+              />
+              <div>
+                <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.28em] text-[#111315]/60">QR Payment</p>
+                <h2 className="font-serif text-3xl font-light uppercase text-[#111315]">Scan & Pay</h2>
+                <p className="mt-3 max-w-xl text-sm leading-7 text-[#111315]/60">
+                  Use either QR option for table payment. The full-size payment panel includes downloadable QR codes.
+                </p>
+              </div>
+            </div>
+
+            <button
+              onClick={() => setShowPaymentModal(true)}
+              className="inline-flex h-11 items-center justify-center gap-2 border border-[#111315] px-6 text-xs font-semibold uppercase tracking-[0.14em] text-[#111315] transition hover:bg-[#111315] hover:text-white focus:outline-none"
+            >
+              <Smartphone className="h-4 w-4" />
+              Open QR Codes
+            </button>
+          </section>
+        </main>
+
+        <footer id="footer" className="grid gap-8 bg-[#111315] px-5 py-10 text-white sm:px-10 lg:grid-cols-[1fr_1fr_1.2fr] lg:px-16">
+          <div>
+            <div className="flex items-center gap-3">
+              <Image
+                src="/images/logo.jpeg"
+                alt="Khukuri Restaurant & Bar"
+                width={44}
+                height={44}
+                className="h-11 w-11 rounded-full object-cover ring-1 ring-white/20"
+              />
+              <p className="font-serif text-lg">Khukuri</p>
+            </div>
+            <p className="mt-5 text-xs text-white/50">Khukuri Restaurant & Bar</p>
+            <a
+              href={`https://wa.me/${WHATSAPP_NUMBER.replace(/[^0-9]/g, '')}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-3 inline-flex items-center gap-2 text-xs text-white/70 transition hover:text-white"
+            >
+              <MessageCircle className="h-3.5 w-3.5" />
+              +977 9855073719
+            </a>
+          </div>
+          <div className="grid grid-cols-2 gap-4 text-xs leading-7 text-white/50">
+            <div>
+              <a className="block transition hover:text-white" href="#menu">Menu</a>
+              <a className="block transition hover:text-white" href="#special">Specials</a>
+              <a className="block transition hover:text-white" href="#payment">Payment</a>
+            </div>
+            <div>
+              <a className="block transition hover:text-white" href="#tea-coffee">Tea & Coffee</a>
+              <a className="block transition hover:text-white" href="#momos">Momos</a>
+              <a className="block transition hover:text-white" href="#nepali-thakali-khana">Thakali Khana</a>
+            </div>
+          </div>
+          <div className="text-xs leading-7 text-white/50">
+            <p>Open daily for dine-in menu service.</p>
+            <p>{currentDate} · {currentTime}</p>
+            <p>{greeting}</p>
+          </div>
+        </footer>
+      </div>
+
+      {showPaymentModal && (
+        <div className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-[#111315]/70 p-4 backdrop-blur-sm animate-fade-in sm:items-center">
+          <div className="my-4 w-full max-w-3xl bg-[#f0f6fa] shadow-2xl animate-scale-up">
+            <div className="flex items-start justify-between gap-6 border-b border-black/10 px-5 py-5 sm:px-8">
+              <div>
+                <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.24em] text-[#111315]/60">Khukuri Payment</p>
+                <h2 className="font-serif text-3xl font-light uppercase text-[#111315]">QR Payment</h2>
+                <p className="mt-2 text-sm text-[#111315]/60">Scan or download a QR code to complete payment.</p>
+              </div>
               <button
                 onClick={() => setShowPaymentModal(false)}
-                className="w-full rounded-full border border-[#dce3df] bg-white py-3 font-bold text-[#64716d] transition hover:border-[#2f6f68]/40 hover:text-[#2f6f68]"
+                className="flex h-10 w-10 shrink-0 items-center justify-center border border-black/10 text-xl leading-none text-[#111315] transition hover:bg-[#111315] hover:text-white hover:border-[#111315]"
+                aria-label="Close payment panel"
               >
-                Close
+                <X className="h-4 w-4" />
               </button>
+            </div>
+
+            <div className="grid gap-5 p-5 sm:grid-cols-2 sm:p-8">
+              {paymentQrs.map((qr) => (
+                <div key={qr.src} className="border border-black/10 bg-white p-4">
+                  <p className="mb-3 text-center text-[10px] font-semibold uppercase tracking-[0.18em] text-[#111315]">{qr.name}</p>
+                  <div className="relative mx-auto aspect-square w-full max-w-64 overflow-hidden border border-black/10 bg-[#f0f6fa]">
+                    <Image
+                      src={qr.src}
+                      alt={qr.name}
+                      fill
+                      sizes="256px"
+                      className="object-contain p-2"
+                    />
+                  </div>
+                  <a
+                    href={qr.src}
+                    download
+                    className="mt-4 flex h-11 items-center justify-center gap-2 border border-[#111315] bg-[#111315] text-sm font-semibold uppercase tracking-[0.12em] text-white transition hover:opacity-80"
+                  >
+                    <Download className="h-4 w-4" />
+                    Download
+                  </a>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       )}
 
-      {/* Animations */}
+      {/* Floating WhatsApp Button */}
+      <a
+        href={`https://wa.me/${WHATSAPP_NUMBER.replace(/[^0-9]/g, '')}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-6 right-6 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-[#111315] text-white shadow-lg shadow-black/20 transition-transform duration-200 hover:scale-110 focus:outline-none"
+        aria-label="Chat on WhatsApp"
+      >
+        <MessageCircle className="h-7 w-7" />
+      </a>
+
       <style>{`
-        @keyframes blob {
-          0%, 100% { transform: translate(0, 0) scale(1); }
-          33% { transform: translate(30px, -50px) scale(1.1); }
-          66% { transform: translate(-20px, 20px) scale(0.9); }
+        html {
+          scroll-behavior: smooth;
         }
         @keyframes fade-in {
           from { opacity: 0; }
           to { opacity: 1; }
         }
-        @keyframes slide-up {
-          from { opacity: 0; transform: translateY(20px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
         @keyframes scale-up {
-          from { opacity: 0; transform: scale(0.95); }
-          to { opacity: 1; transform: scale(1); }
-        }
-        @keyframes pulse-soft {
-          0%, 100% { box-shadow: 0 0 0 0 rgba(14, 165, 233, 0.7); }
-          50% { box-shadow: 0 0 0 10px rgba(14, 165, 233, 0); }
-        }
-        .animate-blob {
-          animation: blob 7s infinite;
-        }
-        .animation-delay-2000 {
-          animation-delay: 2s;
-        }
-        .animation-delay-4000 {
-          animation-delay: 4s;
+          from { opacity: 0; transform: translateY(8px) scale(0.98); }
+          to { opacity: 1; transform: translateY(0) scale(1); }
         }
         .animate-fade-in {
-          animation: fade-in 0.6s ease-out;
-        }
-        .animate-slide-up {
-          animation: slide-up 0.6s ease-out forwards;
+          animation: fade-in 0.22s ease-out;
         }
         .animate-scale-up {
-          animation: scale-up 0.3s ease-out;
-        }
-        .animate-pulse-soft {
-          animation: pulse-soft 2s infinite;
+          animation: scale-up 0.22s ease-out;
         }
       `}</style>
     </div>
