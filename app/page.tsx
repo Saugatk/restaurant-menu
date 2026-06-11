@@ -48,12 +48,13 @@ export default function MenuApp() {
     'Starter',
     'Veg Items',
     'Non Veg Items (Chicken)',
-    'Momos',
-    'Chowmin',
+    'Momo',
+    'Chowmein',
     'Kati Roll',
     'Thukpa',
     'Pizza',
     'Burger',
+    'Sandwich',
     'Biryani',
     'Nepali Thakali Khana',
     'Soup',
@@ -65,270 +66,277 @@ export default function MenuApp() {
     'Wine',
     'Whiskey / Vodka',
     'Fried Rice',
-    'Omelette Egg',
+    'Omelette / Egg',
     'Mutton',
     'Pork',
     'Buff',
     'Sekuwa',
     'Khaja Set',
-    'Hot Set',
-    'Half Full',
     'Taas',
     'Sadeko',
+    'Hookah',
   ]
 
   const menuData = {
     'Special': [
-      { name: 'Chicken Roast', price: '350', image: '/images/chicken-roast.png', popular: true },
-      { name: 'Chicken Momo', price: '140', image: '/images/momo.png', popular: true },
-      { name: 'Mutton Khaja Set', price: '500', image: '/images/thakali-khana.png', popular: true },
-      { name: 'Biryani Chicken', price: '450', image: '/images/biryani.png', popular: true },
-      { name: 'French Fry', price: '180', image: '/images/french-fry.png' },
-      { name: 'Chowmin Chicken', price: '150', image: '/images/chowmin.png' },
-      { name: 'Milk Tea', price: '50', image: '/images/milk-tea.png' },
-      { name: 'Pizza Chicken', price: '500', image: '/images/pizza.png' },
+      { name: 'Tawa Pork', price: '400', image: '/images/pork tawa.jpg', popular: true },
+      { name: 'Chicken Biryani', price: '500', image: '/images/chicken fried rice.jpg', popular: true },
+      { name: 'Mutton Khaja Set', price: '600', image: '/images/mutton khaja set.jpg', popular: true },
     ],
     'Tea & Coffee': [
-      { name: 'Milk Tea', price: '50', image: '/images/milk-tea.png' },
-      { name: 'Black Tea', price: '40', image: '/images/black-tea.png' },
-      { name: 'Milk Coffee', price: '120', image: '/images/coffee.png' },
-      { name: 'Black Coffee', price: '80', image: '/images/coffee.png' },
-      { name: 'Cold Coffee', price: '160', image: '/images/cold-coffee.png' },
-      { name: 'Hot Lemon', price: '60', image: '/images/black-tea.png' },
-      { name: 'Lemon Tea', price: '50', image: '/images/black-tea.png' },
+      { name: 'Milk Tea', price: '30', image: '/images/milk tea.jpg' },
+      { name: 'Masala Milk Tea', price: '50', image: '/images/milk tea.jpg' },
+      { name: 'Black Tea', price: '40', image: '/images/black tea.jpg' },
+      { name: 'Ginger Black Tea', price: '50', image: '/images/black tea.jpg' },
+      { name: 'Lemon Tea', price: '50', image: '/images/lemon tea.jpg' },
+      { name: 'Hot Lemon', price: '80', image: '/images/lemon tea.jpg' },
+      { name: 'Hot Lemon with Honey', price: '120', image: '/images/lemon tea.jpg' },
+      { name: 'Milk Coffee', price: '120', image: '/images/black coffee.jpg' },
+      { name: 'Black Coffee', price: '80', image: '/images/black coffee.jpg' },
+      { name: 'Cold Coffee', price: '160', image: '/images/cold coffee.jpg' },
+      { name: 'Hot Chocolate', price: '200', image: '/images/black coffee.jpg' },
+      { name: 'Steamed Milk', price: '80', image: '/images/milk tea.jpg' },
+      { name: 'Flavored Steamed Milk', price: '120', image: '/images/milk tea.jpg' },
     ],
     'Soft Drinks': [
-      { name: 'Coke/Fanta/Sprite/Dew/Pepsi/Slice', price: '70', image: '/images/soft-drinks.png' },
-      { name: 'Lemon Soda', price: '60', image: '/images/soft-drinks.png' },
-      { name: 'Soda Water', price: '110', image: '/images/soft-drinks.png' },
-      { name: 'Min. Water', price: '25', image: '/images/soft-drinks.png' },
+      { name: 'Lemon Soda', price: '60', image: '/images/lemon soda.jpg' },
+      { name: 'Soda Water', price: '110', image: '/images/soda water.jpg' },
+      { name: 'Mineral Water', price: '25', image: '/images/min.water.jpg' },
     ],
     'Starter': [
-      { name: 'French Fry', price: '180', image: '/images/french-fry.png' },
-      { name: 'Papad (dry/masala/fry)', price: '50/100/60', image: '/images/pakoda.png' },
-      { name: 'Peanut (plain/sadeko)', price: '100/180', image: '/images/pakoda.png' },
-      { name: 'Kaju (plain/fry)', price: '250/300', image: '/images/pakoda.png' },
+      { name: 'French Fry', price: '180', image: '/images/french fry.jpg' },
+      { name: 'Papad Dry / Masala / Fry', price: '50 / 100 / 60', image: '/images/papad(fry,dry,masala).jpg' },
+      { name: 'Peanut Plain / Sadeko', price: '100 / 180', image: '/images/peanut sadeko.jpg' },
+      { name: 'Kaju Plain / Fry', price: '250 / 300', image: '/images/kaju fry.jpg' },
+      { name: 'Potato Spiral with Seasoning', price: '80', image: '/images/aalu fry.jpg' },
     ],
     'Veg Items': [
-      { name: 'Aalu Fry', price: '90', image: '/images/alu-fry.png' },
-      { name: 'Alu Jira', price: '180', image: '/images/alu-fry.png' },
-      { name: 'Veg Pakoda', price: '200', image: '/images/pakoda.png' },
-      { name: 'Potato Chilly', price: '220', image: '/images/alu-fry.png' },
-      { name: 'Mushroom Pakoda', price: '280', image: '/images/pakoda.png' },
-      { name: 'Paneer Pakoda', price: '300', image: '/images/pakoda.png' },
-      { name: 'Mushroom Chilly', price: '300', image: '/images/pakoda.png' },
+      { name: 'Aalu Fry', price: '90', image: '/images/aalu fry.jpg' },
+      { name: 'Aalu Jeera', price: '150', image: '/images/aalu fry.jpg' },
+      { name: 'Veg Pakoda', price: '200', image: '/images/veg pakauda.jpg' },
+      { name: 'Potato Chilly', price: '220', image: '/images/potato chilly.jpg' },
+      { name: 'Mushroom Pakoda', price: '280', image: '/images/mushroom pakoda.jpg' },
+      { name: 'Paneer Pakoda', price: '300', image: '/images/paneer pakauda.jpg' },
+      { name: 'Mushroom Chilly', price: '300', image: '/images/ mushroom chilly.jpg' },
     ],
     'Non Veg Items (Chicken)': [
-      { name: 'Chicken Roast', price: '350', image: '/images/chicken-roast.png' },
-      { name: 'Chicken Boil', price: '300', image: '/images/chicken-roast.png' },
-      { name: 'Chicken Chilly (boneless/with bone)', price: '380', image: '/images/chicken-roast.png' },
-      { name: 'Chicken Choila', price: '300', image: '/images/chicken-roast.png' },
-      { name: 'Chicken Meat Ball', price: '300', image: '/images/chicken-roast.png' },
-      { name: 'Chicken Leg Piece Fry (2pcs)', price: '400', image: '/images/chicken-roast.png' },
-      { name: 'Chicken Drumstick (6 pcs)', price: '720', image: '/images/chicken-roast.png' },
-      { name: 'Chicken Sausage (fry/chilli/sadeko)', price: '70/80/180', image: '/images/chicken-roast.png' },
-      { name: 'Chicken 65 (per plate)', price: '450', image: '/images/chicken-roast.png' },
+      { name: 'Chicken Roast', price: '350', image: '/images/chicken roast.jpg' },
+      { name: 'Chicken Boil', price: '300', image: '/images/chicken boil.jpg' },
+      { name: 'Chicken Chilli', price: '380', image: '/images/Chicken Chilly.jpg' },
+      { name: 'Chicken Choila', price: '300', image: '/images/chicken choila.jpg' },
+      { name: 'Chicken Meat Ball', price: '300', image: '/images/buff meatballs.jpg' },
+      { name: 'Chicken Leg Piece Fry, 2 pcs', price: '400', image: '/images/chicken leg piece fry(2 pcs).jpg' },
+      { name: 'Chicken Drumstick, per piece', price: '180', image: '/images/chicken drumstick(6 pcs).jpg' },
+      { name: 'Chicken Drumstick, 6 pcs', price: '720', image: '/images/chicken drumstick(6 pcs).jpg' },
+      { name: 'Chicken Sausage Fry / Chilli / Sadeko', price: '70 / 80 / 180', image: '/images/chicken sausage .jpg' },
+      { name: 'Chicken 65', price: '450', image: '/images/chicken roast.jpg' },
+      { name: 'Chicken Lollipop, 4 pcs', price: '320', image: '/images/chicken roast.jpg' },
+      { name: 'Tawa Chicken', price: '350', image: '/images/chicken roast.jpg' },
+      { name: 'Buffalo Wings', price: '380', image: '/images/chicken drumstick(6 pcs).jpg' },
+      { name: 'Chicken Hot Wings', price: '380', image: '/images/chicken drumstick(6 pcs).jpg' },
+      { name: 'Chicken Wings', price: '150', image: '/images/chicken drumstick(6 pcs).jpg' },
     ],
-    'Momos': [
-      { name: 'Veg Momo', price: '120', image: '/images/momo.png' },
-      { name: 'Veg Fry', price: '140', image: '/images/momo.png' },
-      { name: 'Veg Chilly', price: '160', image: '/images/momo.png' },
-      { name: 'Buff Momo', price: '140', image: '/images/momo.png' },
-      { name: 'Buff C.', price: '160', image: '/images/momo.png' },
-      { name: 'Buff Fry', price: '150', image: '/images/momo.png' },
-      { name: 'Buff Khote', price: '200', image: '/images/momo.png' },
-      { name: 'Buff Chilly', price: '180', image: '/images/momo.png' },
-      { name: 'Chicken Momo', price: '140', image: '/images/momo.png' },
-      { name: 'Chicken C.', price: '160', image: '/images/momo.png' },
-      { name: 'Chicken Fry', price: '150', image: '/images/momo.png' },
-      { name: 'Chicken Khote', price: '200', image: '/images/momo.png' },
-      { name: 'Chicken Chilly', price: '180', image: '/images/momo.png' },
-      { name: 'Chicken Chilli Momo', price: '160', image: '/images/momo.png' },
-      { name: 'Paneer Momo', price: '280', image: '/images/momo.png' },
-      { name: 'Paneer Fry', price: '200', image: '/images/momo.png' },
-      { name: 'Paneer Jhol', price: '220', image: '/images/momo.png' },
+    'Momo': [
+      { name: 'Chicken Momo Steam', price: '140', image: '/images/buff steam momo.jpg' },
+      { name: 'Chicken Momo Fried', price: '150', image: '/images/Fried Buff Momo.jpg' },
+      { name: 'Chicken Momo Kothey', price: '180', image: '/images/chicken khote momo.jpg' },
+      { name: 'Chicken Momo Jhol', price: '160', image: '/images/chilly momo.jpg' },
+      { name: 'Chicken Momo C', price: '150', image: '/images/chilly momo.jpg' },
+      { name: 'Buff Momo Steam', price: '140', image: '/images/buff steam momo.jpg' },
+      { name: 'Buff Momo Fried', price: '150', image: '/images/Fried Buff Momo.jpg' },
+      { name: 'Buff Momo Kothey', price: '180', image: '/images/buff khote momo.jpg' },
+      { name: 'Buff Momo Jhol', price: '160', image: '/images/chilly momo.jpg' },
+      { name: 'Buff Momo C', price: '150', image: '/images/chilly momo.jpg' },
+      { name: 'Veg Momo Steam', price: '120', image: '/images/veg momo.jpg' },
+      { name: 'Veg Momo Fried', price: '130', image: '/images/fry veg momo.jpg' },
+      { name: 'Veg Momo Kothey', price: '140', image: '/images/veg momo.jpg' },
+      { name: 'Veg Momo Jhol', price: '150', image: '/images/veg-chilli-momo-.jpg' },
+      { name: 'Veg Momo C', price: '140', image: '/images/veg-chilli-momo-.jpg' },
     ],
-    'Chowmin': [
-      { name: 'Buff', price: '150', image: '/images/chowmin.png' },
-      { name: 'Chicken', price: '150', image: '/images/chowmin.png' },
-      { name: 'Veg', price: '120', image: '/images/chowmin.png' },
-      { name: 'Egg', price: '140', image: '/images/chowmin.png' },
-      { name: 'Mixed', price: '200', image: '/images/chowmin.png' },
+    'Chowmein': [
+      { name: 'Veg Chowmein', price: '120', image: '/images/veg chowmin.jpg' },
+      { name: 'Buff Chowmein', price: '150', image: '/images/chicken chowmin.jpg' },
+      { name: 'Chicken Chowmein', price: '150', image: '/images/chicken chowmin.jpeg' },
+      { name: 'Egg Chowmein', price: '140', image: '/images/chicken chowmin.jpg' },
+      { name: 'Mixed Chowmein', price: '200', image: '/images/mix chowmin.jpg' },
     ],
     'Kati Roll': [
-      { name: 'Veg', price: '180', image: '/images/kati-roll.png' },
-      { name: 'Chicken', price: '250', image: '/images/kati-roll.png' },
-      { name: 'Egg', price: '200', image: '/images/kati-roll.png' },
-      { name: 'Mushroom', price: '200', image: '/images/kati-roll.png' },
-      { name: 'Paneer', price: '230', image: '/images/kati-roll.png' },
+      { name: 'Veg', price: '180', image: '/images/veg kathi roll.jpg' },
+      { name: 'Chicken', price: '250', image: '/images/chicken kathi roll.jpg' },
+      { name: 'Egg', price: '200', image: '/images/egg kathi roll.jpg' },
+      { name: 'Mushroom', price: '200', image: '/images/veg kathi roll.jpg' },
+      { name: 'Paneer', price: '230', image: '/images/paneer kathi roll.jpg' },
     ],
     'Thukpa': [
-      { name: 'Veg Thukpa', price: '150', image: '/images/thukpa.png' },
-      { name: 'Chicken', price: '200', image: '/images/thukpa.png' },
-      { name: 'Mutton', price: '250', image: '/images/thukpa.png' },
-      { name: 'Mixed', price: '300', image: '/images/thukpa.png' },
+      { name: 'Veg Thukpa', price: '140', image: '/images/veg thukpa.jpg' },
+      { name: 'Buff Thukpa', price: '180', image: '/images/mixed thukpa.jpg' },
+      { name: 'Chicken Thukpa', price: '200', image: '/images/chichken thukpa.jpg' },
+      { name: 'Mutton Thukpa', price: '250', image: '/images/mutton thukpa.jpg' },
+      { name: 'Mixed Thukpa', price: '300', image: '/images/mixed thukpa.jpg' },
     ],
     'Pizza': [
-      { name: 'Veg', price: '400', image: '/images/pizza.png' },
-      { name: 'Chicken', price: '500', image: '/images/pizza.png' },
-      { name: 'Cheese', price: '450', image: '/images/pizza.png' },
-      { name: 'Buff', price: '500', image: '/images/pizza.png' },
-      { name: 'Mixed', price: '550', image: '/images/pizza.png' },
-      { name: 'Mushroom', price: '450', image: '/images/pizza.png' },
+      { name: 'Veg Pizza', price: '400', image: '/images/veg pizza.jpg' },
+      { name: 'Chicken Pizza', price: '500', image: '/images/chicken pizza.jpg' },
+      { name: 'Cheese Pizza', price: '450', image: '/images/cheese pizza.jpg' },
+      { name: 'Buff Pizza', price: '500', image: '/images/buff pizza.jpg' },
+      { name: 'Mixed Pizza', price: '550', image: '/images/mixed pizza.jpg' },
+      { name: 'Mushroom Pizza', price: '450', image: '/images/mushroom pizza.jpg' },
     ],
     'Burger': [
-      { name: 'Chicken', price: '300', image: '/images/burger.png' },
-      { name: 'Buff', price: '300', image: '/images/burger.png' },
-      { name: 'Veg', price: '200', image: '/images/burger.png' },
+      { name: 'Chicken Burger', price: '300', image: '/images/chicken burger.jpg' },
+      { name: 'Buff Burger', price: '300', image: '/images/chicken burger.jpg' },
+      { name: 'Veg Burger', price: '200', image: '/images/veg burger.jpg' },
+    ],
+    'Sandwich': [
+      { name: 'Veg Sandwich', price: '80', image: '/images/veg burger.jpg' },
+      { name: 'Egg Sandwich', price: '100', image: '/images/egg kathi roll.jpg' },
+      { name: 'Chicken Sandwich', price: '150', image: '/images/chicken burger.jpg' },
+      { name: 'Cheese Sandwich', price: '120', image: '/images/cheese pizza.jpg' },
     ],
     'Biryani': [
-      { name: 'Veg', price: '380', image: '/images/biryani.png' },
-      { name: 'Chicken', price: '450', image: '/images/biryani.png' },
-      { name: 'Mutton', price: '550', image: '/images/biryani.png' },
-      { name: 'Egg', price: '400', image: '/images/biryani.png' },
+      { name: 'Veg Biryani', price: '380', image: '/images/veg biryani.jpg' },
+      { name: 'Chicken Biryani', price: '500', image: '/images/chicken fried rice.jpg' },
+      { name: 'Mutton Biryani', price: '550', image: '/images/mutton biryani.jpg' },
+      { name: 'Egg Biryani', price: '400', image: '/images/egg biryani.jpg' },
     ],
     'Nepali Thakali Khana': [
-      { name: 'Veg', price: '250', image: '/images/thakali-khana.png' },
-      { name: 'Chicken', price: '400', image: '/images/thakali-khana.png' },
-      { name: 'Mutton', price: '500', image: '/images/thakali-khana.png' },
-      { name: 'Egg', price: '300', image: '/images/thakali-khana.png' },
-      { name: 'Fish', price: '475', image: '/images/thakali-khana.png' },
+      { name: 'Veg', price: '250', image: '/images/veg thakali khana set.jpg' },
+      { name: 'Chicken', price: '400', image: '/images/chicken thakali khana.jpg' },
+      { name: 'Mutton', price: '500', image: '/images/mutton khana thali set.jpg' },
+      { name: 'Egg', price: '300', image: '/images/chicken thakali khana.jpg' },
+      { name: 'Fish', price: '475', image: '/images/chicken thakali khana.jpg' },
     ],
     'Soup': [
-      { name: 'Chicken', price: '140', image: '/images/soup.png' },
-      { name: 'Mutton', price: '160', image: '/images/soup.png' },
-      { name: 'Mushroom', price: '120', image: '/images/soup.png' },
-      { name: 'Veg', price: '90', image: '/images/soup.png' },
-      { name: 'Mixed', price: '190', image: '/images/soup.png' },
+      { name: 'Veg Soup', price: '90', image: '/images/veg soup.jpg' },
+      { name: 'Mushroom Soup', price: '120', image: '/images/mushroom soup.jpg' },
+      { name: 'Chicken Soup', price: '140', image: '/images/chicken soup.jpg' },
+      { name: 'Mutton Soup', price: '160', image: '/images/mutton soup.jpg' },
+      { name: 'Mixed Soup', price: '190', image: '/images/mushroom soup.jpg' },
     ],
     'Salad': [
-      { name: 'Green Salad (Small Plate)', price: '70', image: '/images/salad.png' },
-      { name: 'Green Salad (Large Plate)', price: '120', image: '/images/salad.png' },
-      { name: 'Fruit Salad (Small Plate)', price: '120', image: '/images/salad.png' },
-      { name: 'Fruit Salad (Large Plate)', price: '200', image: '/images/salad.png' },
-      { name: 'Russian Salad (Small Plate)', price: '185', image: '/images/salad.png' },
-      { name: 'Russian Salad (Large Plate)', price: '350', image: '/images/salad.png' },
+      { name: 'Green Salad, Small Plate', price: '70', image: '/images/green salad.jpg' },
+      { name: 'Green Salad, Large Plate', price: '120', image: '/images/green salad large plate.jpeg' },
+      { name: 'Fruit Salad, Small Plate', price: '120', image: '/images/Fruit Salad small plate.jpg' },
+      { name: 'Fruit Salad, Large Plate', price: '200', image: '/images/fruit salad large plate.jpeg' },
+      { name: 'Russian Salad, Small Plate', price: '185', image: '/images/russian salad small plate.jpg' },
+      { name: 'Russian Salad, Large Plate', price: '350', image: '/images/russian salad large plate.jpg' },
     ],
     'Lassi': [
-      { name: 'Plain', price: '120', image: '/images/lassi.png' },
-      { name: 'Sweet', price: '130', image: '/images/lassi.png' },
-      { name: 'Banana', price: '180', image: '/images/lassi.png' },
-      { name: 'Mango', price: '200', image: '/images/lassi.png' },
-      { name: 'Dry Fruit', price: '230', image: '/images/lassi.png' },
+      { name: 'Plain Lassi', price: '120', image: '/images/plain lassi.jpg' },
+      { name: 'Sweet Lassi', price: '130', image: '/images/sweet lassi.jpg' },
+      { name: 'Banana Lassi', price: '180', image: '/images/banana lassi.jpg' },
+      { name: 'Mango Lassi', price: '200', image: '/images/mango lassi.jpg' },
+      { name: 'Vanilla Lassi', price: '200', image: '/images/plain lassi.jpg' },
+      { name: 'Dry Fruit Lassi', price: '230', image: '/images/dry fruit lassi.jpg' },
     ],
     'Milk Shake': [
-      { name: 'Vanilla', price: '250', image: '/images/milkshake.png' },
-      { name: 'Chocolate', price: '275', image: '/images/milkshake.png' },
-      { name: 'Strawberry', price: '300', image: '/images/milkshake.png' },
-      { name: 'Oreo Milkshake', price: '300', image: '/images/milkshake.png' },
+      { name: 'Vanilla Milk Shake', price: '250', image: '/images/plain lassi.jpg' },
+      { name: 'Chocolate Milk Shake', price: '275', image: '/images/cold coffee.jpg' },
+      { name: 'Strawberry Milk Shake', price: '300', image: '/images/mango lassi.jpg' },
+      { name: 'Oreo Milkshake', price: '300', image: '/images/cold coffee.jpg' },
     ],
     'Juice': [
-      { name: 'Mango Juice', price: '250', image: '/images/juice.png' },
-      { name: 'Orange Juice', price: '250', image: '/images/juice.png' },
+      { name: 'Mango Juice', price: '250', image: '/images/mango juice.jpg' },
+      { name: 'Orange Juice', price: '250', image: '/images/orange juice.jpg' },
     ],
     'Beer': [
-      { name: 'Gorkha Strong (300ml/650ml)', price: '250/500', image: '/images/coke_fanta_dew_sprite.jpg' },
-      { name: 'Tuborg (300ml/650ml)', price: '300/600', image: '/images/coke_fanta_dew_sprite.jpg' },
-      { name: 'Arna (300ml)', price: '250', image: '/images/coke_fanta_dew_sprite.jpg' },
-      { name: 'Barahsinghe (300ml/650ml)', price: '300/550', image: '/images/coke_fanta_dew_sprite.jpg' },
-      { name: 'Carlsberg (300ml/650ml)', price: '350/650', image: '/images/coke_fanta_dew_sprite.jpg' },
-      { name: '500 Beer (650ml)', price: '380', image: '/images/coke_fanta_dew_sprite.jpg' },
+      { name: 'Gorkha Strong 300ml / 650ml', price: '250 / 500', image: '/images/coke_fanta_dew_sprite.jpg' },
+      { name: 'Tuborg 300ml / 650ml', price: '300 / 600', image: '/images/coke_fanta_dew_sprite.jpg' },
+      { name: 'Arna 300ml', price: '250', image: '/images/coke_fanta_dew_sprite.jpg' },
+      { name: 'Barahsinghe 300ml / 650ml', price: '300 / 550', image: '/images/coke_fanta_dew_sprite.jpg' },
+      { name: 'Carlsberg 300ml / 650ml', price: '350 / 650', image: '/images/coke_fanta_dew_sprite.jpg' },
+      { name: '500 Beer 650ml', price: '380', image: '/images/coke_fanta_dew_sprite.jpg' },
       { name: 'Tuborg Can Beer', price: '450', image: '/images/coke_fanta_dew_sprite.jpg' },
       { name: 'Gorkha 500', price: '400', image: '/images/coke_fanta_dew_sprite.jpg' },
     ],
     'Wine': [
-      { name: 'Big Master (750ml)', price: '1100', image: '/images/coke_fanta_dew_sprite.jpg' },
-      { name: 'Canvas (750ml)', price: '1100', image: '/images/coke_fanta_dew_sprite.jpg' },
+      { name: 'Big Master 750ml', price: '1100', image: '/images/coke_fanta_dew_sprite.jpg' },
+      { name: 'Canvas 750ml', price: '1100', image: '/images/coke_fanta_dew_sprite.jpg' },
     ],
     'Whiskey / Vodka': [
-      { name: 'Golden Oak (60/90/180/375/750ml)', price: '200/250/400/800/1600', image: '/images/coke_fanta_dew_sprite.jpg' },
-      { name: 'Old Durbar Red (60/90/180/375/750ml)', price: '280/430/800/1600/3200', image: '/images/coke_fanta_dew_sprite.jpg' },
-      { name: 'Old Durbar Black (60/90/180/375/750ml)', price: '380/550/1050/2050/4100', image: '/images/coke_fanta_dew_sprite.jpg' },
-      { name: '8848 Vodka (60/90/180/375/750ml)', price: '270/400/750/1500/3000', image: '/images/coke_fanta_dew_sprite.jpg' },
-      { name: 'Khukri Rum (60/90/180/375/750ml)', price: '250/350/700/1350/2700', image: '/images/coke_fanta_dew_sprite.jpg' },
-      { name: 'Signature Red (60/90/180/375/750ml)', price: '280/430/800/1600/3200', image: '/images/coke_fanta_dew_sprite.jpg' },
-      { name: 'Mustang (60/90/180/375/750ml)', price: '150/200/400/800/1600', image: '/images/coke_fanta_dew_sprite.jpg' },
-      { name: 'Highlander (60/90/180/375/750ml)', price: '140/200/375/750/1500', image: '/images/coke_fanta_dew_sprite.jpg' },
+      { name: 'Golden Oak 60 / 90 / 180 / 375 / 750ml', price: '200 / 250 / 400 / 800 / 1600', image: '/images/coke_fanta_dew_sprite.jpg' },
+      { name: 'Old Durbar Red 60 / 90 / 180 / 375 / 750ml', price: '280 / 430 / 800 / 1600 / 3200', image: '/images/coke_fanta_dew_sprite.jpg' },
+      { name: 'Old Durbar Black 60 / 90 / 180 / 375 / 750ml', price: '380 / 550 / 1050 / 2050 / 4100', image: '/images/coke_fanta_dew_sprite.jpg' },
+      { name: '8848 Vodka 60 / 90 / 180 / 375 / 750ml', price: '270 / 400 / 750 / 1500 / 3000', image: '/images/coke_fanta_dew_sprite.jpg' },
+      { name: 'Khukri Rum 60 / 90 / 180 / 375 / 750ml', price: '250 / 350 / 700 / 1350 / 2700', image: '/images/coke_fanta_dew_sprite.jpg' },
+      { name: 'Signature Red 60 / 90 / 180 / 375 / 750ml', price: '280 / 430 / 800 / 1600 / 3200', image: '/images/coke_fanta_dew_sprite.jpg' },
+      { name: 'Mustang 60 / 90 / 180 / 375 / 750ml', price: '150 / 200 / 400 / 800 / 1600', image: '/images/coke_fanta_dew_sprite.jpg' },
+      { name: 'Highlander 60 / 90 / 180 / 375 / 750ml', price: '140 / 200 / 375 / 750 / 1500', image: '/images/coke_fanta_dew_sprite.jpg' },
     ],
     'Fried Rice': [
-      { name: 'Veg Fry Rice', price: '200', image: '/images/fried-rice.png' },
-      { name: 'Egg Fry Rice', price: '250', image: '/images/fried-rice.png' },
-      { name: 'Buff Fry Rice', price: '300', image: '/images/fried-rice.png' },
-      { name: 'Chicken Fry Rice', price: '300', image: '/images/fried-rice.png' },
-      { name: 'Mix Fry Rice', price: '350', image: '/images/fried-rice.png' },
+      { name: 'Fried Rice', price: '150', image: '/images/chinese fried rice.jpg' },
+      { name: 'Veg Fried Rice', price: '200', image: '/images/veg fried rice.jpg' },
+      { name: 'Egg Fried Rice', price: '250', image: '/images/egg fried rice.jpg' },
+      { name: 'Buff Fried Rice', price: '300', image: '/images/Buff Chicken Fried Rice.jpg' },
+      { name: 'Chicken Fried Rice', price: '300', image: '/images/chicken fried rice.jpg' },
+      { name: 'Mixed Fried Rice', price: '350', image: '/images/chinese fried rice.jpg' },
     ],
-    'Omelette Egg': [
-      { name: 'Plain Omelette', price: '50', image: '/images/omelette.png' },
-      { name: 'Masala Omelette', price: '80', image: '/images/omelette.png' },
-      { name: 'Fry Egg', price: '60', image: '/images/omelette.png' },
-      { name: 'Poach Egg', price: '70', image: '/images/omelette.png' },
-      { name: 'Boiled Egg', price: '50', image: '/images/omelette.png' },
+    'Omelette / Egg': [
+      { name: 'Plain Omelette', price: '50', image: '/images/plain omlet.webp' },
+      { name: 'Masala Omelette', price: '80', image: '/images/masala omlet.jpg' },
+      { name: 'Fry Egg', price: '60', image: '/images/fry omelette.jpg' },
+      { name: 'Poach Egg', price: '70', image: '/images/pouch egg.jpg' },
+      { name: 'Boiled Egg', price: '50', image: '/images/boiled egg.jpg' },
     ],
     'Mutton': [
-      { name: 'Mutton Chilly (Small/Large)', price: '400/500', image: '/images/mutton.png' },
-      { name: 'Mutton Grevy (Small/Large)', price: '300/450', image: '/images/mutton.png' },
-      { name: 'Mutton Taas (Small/Large)', price: '350/450', image: '/images/mutton.png' },
-      { name: 'Mutton Boil (Small/Large)', price: '300/400', image: '/images/mutton.png' },
+      { name: 'Mutton Chilly, Small / Large', price: '400 / 500', image: '/images/mutton chilly.jpg' },
+      { name: 'Mutton Gravy, Small / Large', price: '300 / 450', image: '/images/mutton grevy.jpg' },
+      { name: 'Mutton Taas, Small / Large', price: '350 / 450', image: '/images/mutton taas.jpg' },
+      { name: 'Mutton Boil, Small / Large', price: '300 / 400', image: '/images/mutton soup.jpg' },
     ],
     'Pork': [
-      { name: 'Pork Tawa', price: '400', image: '/images/pork.png' },
-      { name: 'Pork Fry', price: '375', image: '/images/pork.png' },
-      { name: 'Pork Sadeko (Fry/Boil, Small/Large)', price: '400/500', image: '/images/pork.png' },
-      { name: 'Pork Boil (Small/Large)', price: '300/400', image: '/images/pork.png' },
-      { name: 'Pork Choila (Small/Large)', price: '360/460', image: '/images/pork.png' },
-      { name: 'Pork Chilly (Small/Large)', price: '360/480', image: '/images/pork.png' },
-      { name: 'Pork Sekuwa (Small/Large)', price: '350/450', image: '/images/pork.png' },
+      { name: 'Tawa Pork', price: '400', image: '/images/pork tawa.jpg' },
+      { name: 'Pork Fry', price: '375', image: '/images/pork fry.jpg' },
+      { name: 'Pork Choila', price: '400', image: '/images/pork choila.jpg' },
+      { name: 'Pork Chilli', price: '400', image: '/images/pork chilly.jpg' },
+      { name: 'Pork Boil, Small / Large', price: '300 / 400', image: '/images/pork boil.jpg' },
+      { name: 'Pork Sekuwa, Small / Large', price: '350 / 450', image: '/images/pork sadeko.jpg' },
     ],
     'Buff': [
-      { name: 'Sukuti (Small/Large)', price: '300/400', image: '/images/buff sekuwa.jpg' },
-      { name: 'Choila (Small/Large)', price: '330/430', image: '/images/buff sekuwa.jpg' },
-      { name: 'Gravy (Small/Large)', price: '250/350', image: '/images/buff sekuwa.jpg' },
+      { name: 'Sukuti', price: '300', image: '/images/buff sekuwa.jpg' },
+      { name: 'Buff Choila', price: '350', image: '/images/buff sekuwa.jpg' },
+      { name: 'Buff Chilli', price: '380', image: '/images/buff sekuwa.jpg' },
+      { name: 'Buff Gravy, Small / Large', price: '250 / 350', image: '/images/buff sekuwa.jpg' },
+      { name: 'Tawa Buff', price: '380', image: '/images/buff sekuwa.jpg' },
     ],
     'Sekuwa': [
-      { name: 'Buff Sekuwa', price: '150', image: '/images/sekuwa.png' },
-      { name: 'Chicken Sekuwa', price: '150', image: '/images/sekuwa.png' },
-      { name: 'Mutton Sekuwa', price: '150', image: '/images/sekuwa.png' },
-      { name: 'Pork Sekuwa', price: '180', image: '/images/sekuwa.png' },
+      { name: 'Buff Sekuwa', price: '150', image: '/images/buff sekuwa.jpg' },
+      { name: 'Chicken Sekuwa', price: '150', image: '/images/chichken sekuwa.jpg' },
+      { name: 'Mutton Sekuwa', price: '150', image: '/images/mutton sekuwa.jpg' },
+      { name: 'Pork Sekuwa', price: '180', image: '/images/pork sadeko.jpg' },
     ],
     'Khaja Set': [
-      { name: 'Chicken Khaja Set', price: '450', image: '/images/thakali-khana.png' },
-      { name: 'Mutton Khaja Set', price: '600', image: '/images/thakali-khana.png' },
-      { name: 'Veg Khaja Set', price: '350', image: '/images/thakali-khana.png' },
-      { name: 'Buff Khaja Set', price: '480', image: '/images/thakali-khana.png' },
-    ],
-    'Hot Set': [
-      { name: 'Chicken Hot Set', price: '450', image: '/images/chicken khaja set.jpg' },
-      { name: 'Mutton Hot Set', price: '600', image: '/images/mutton khaja set.jpg' },
-      { name: 'Veg Hot Set', price: '350', image: '/images/veg khaja set.jpg' },
-      { name: 'Buff Hot Set', price: '480', image: '/images/Buff Khaja Set.jpg' },
-    ],
-    'Half Full': [
-      { name: 'Chicken', price: '180', image: '/images/chicken.jpg' },
-      { name: 'Egg', price: '250', image: '/images/boiled egg.jpg' },
-      { name: 'Mushroom', price: '200', image: '/images/mushroom soup.jpg' },
-      { name: 'Paneer', price: '230', image: '/images/paneer pakauda.jpg' },
+      { name: 'Chicken Khaja Set', price: '450', image: '/images/chicken khaja set.jpg' },
+      { name: 'Mutton Khaja Set', price: '600', image: '/images/mutton khaja set.jpg' },
+      { name: 'Veg Khaja Set', price: '350', image: '/images/veg khaja set.jpg' },
+      { name: 'Buff Khaja Set', price: '500', image: '/images/Buff Khaja Set.jpg' },
+      { name: 'Pork Khaja Set', price: '500', image: '/images/pork tawa.jpg' },
     ],
     'Taas': [
-      { name: 'Chicken Taas', price: '300', image: '/images/chicken-roast.png' },
-      { name: 'Mutton Taas', price: '450', image: '/images/mutton.png' },
-      { name: 'Pork Taas', price: '400', image: '/images/pork.png' },
+      { name: 'Chicken Taas', price: '300', image: '/images/chicken taas.jpg' },
+      { name: 'Mutton Taas', price: '450', image: '/images/mutton taas.jpg' },
+      { name: 'Pork Taas', price: '400', image: '/images/pork fry.jpg' },
     ],
     'Sadeko': [
-      { name: 'Peanuts Sadeko', price: '180', image: '/images/pakoda.png' },
-      { name: 'Papad Sadeko', price: '160', image: '/images/pakoda.png' },
-      { name: 'Chicken (Boil)', price: '300', image: '/images/chicken-roast.png' },
-      { name: 'Chicken (Fry)', price: '320', image: '/images/chicken-roast.png' },
-      { name: 'Chicken (Sadeko)', price: '350', image: '/images/chicken-roast.png' },
-      { name: 'Mutton (Boil)', price: '400', image: '/images/mutton.png' },
-      { name: 'Mutton (Fry)', price: '450', image: '/images/mutton.png' },
-      { name: 'Mutton (Sadeko)', price: '500', image: '/images/mutton.png' },
+      { name: 'Peanuts Sadeko', price: '180', image: '/images/peanuts sadeko.jpg' },
+      { name: 'Papad Sadeko', price: '160', image: '/images/papad(fry,dry,masala).jpg' },
+      { name: 'Chicken Boil', price: '300', image: '/images/chicken boil.jpg' },
+      { name: 'Chicken Fry', price: '320', image: '/images/chicken roast.jpg' },
+      { name: 'Chicken Sadeko', price: '350', image: '/images/chicken sadeko.jpg' },
+      { name: 'Mutton Boil', price: '400', image: '/images/mutton soup.jpg' },
+      { name: 'Mutton Fry', price: '450', image: '/images/mutton taas.jpg' },
+      { name: 'Mutton Sadeko', price: '500', image: '/images/mutton sadeko.jpg' },
       { name: 'Buff Sadeko', price: '130', image: '/images/buff sekuwa.jpg' },
-      { name: 'Bhatmas (Plain)', price: '100', image: '/images/pakoda.png' },
-      { name: 'Bhatmas (Sadeko)', price: '100', image: '/images/pakoda.png' },
-      { name: 'Mushroom Sadeko', price: '250', image: '/images/pakoda.png' },
-      { name: 'Aalu Sadeko', price: '120', image: '/images/alu-fry.png' },
+      { name: 'Bhatmas Plain', price: '100', image: '/images/bhatmas sadeko.jpg' },
+      { name: 'Bhatmas Sadeko', price: '100', image: '/images/bhatmas sadeko.jpg' },
+      { name: 'Mushroom Sadeko', price: '250', image: '/images/mushroom sadeko.jpg' },
+      { name: 'Aalu Sadeko', price: '120', image: '/images/aalu sadeko.jpg' },
       { name: 'Cucumber Sadeko', price: '100', image: '/images/green salad.jpg' },
-      { name: 'Wai Wai Sadeko', price: '100', image: '/images/chowmin.png' },
+      { name: 'Wai Wai Sadeko', price: '100', image: '/images/wai wai sadeko.png' },
+    ],
+    'Hookah': [
+      { name: 'Normal Hookah', price: '400', image: '/images/coke_fanta_dew_sprite.jpg' },
+      { name: 'Coconut Hookah', price: '500', image: '/images/coke_fanta_dew_sprite.jpg' },
     ],
   }
 
@@ -356,13 +364,6 @@ export default function MenuApp() {
     })
     .filter((section) => section.items.length > 0)
   const visibleItemCount = visibleSections.reduce((total, section) => total + section.items.length, 0)
-  const featuredImages = [
-    '/images/chicken roast.jpg',
-    '/images/chicken khote momo.jpg',
-    '/images/mutton khana thali set.jpg',
-    '/images/mixed pizza.jpg',
-    '/images/mango lassi.jpg',
-  ]
   return (
     <div className="min-h-screen overflow-x-hidden bg-[#dce8f0] px-3 py-4 text-[#111315] sm:px-6 sm:py-8 lg:px-10">
       <div className="mx-auto max-w-6xl overflow-hidden bg-[#f0f6fa] shadow-[0_30px_80px_rgba(17,19,21,0.10)] ring-1 ring-black/5">
@@ -437,37 +438,41 @@ export default function MenuApp() {
         </header>
 
         <main id="menu" className="px-5 pb-12 sm:px-10 lg:px-16">
-          <section className="grid gap-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(320px,1fr)] lg:items-center">
-            <div id="special" className="min-w-0">
-              <p className="mb-4 text-[10px] font-semibold uppercase tracking-[0.28em] text-[#111315]/60">
+          <section id="special">
+            <div className="mb-8 text-center">
+              <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.28em] text-[#111315]/60">
                 Featured
               </p>
               <h2 className="font-serif text-3xl font-light uppercase leading-tight text-[#111315] sm:text-4xl">
                 House Specials
               </h2>
-              <div className="mt-7 space-y-4">
-                {menuData.Special.slice(0, 5).map((item) => (
-                  <div key={item.name} className="grid grid-cols-[minmax(0,1fr)_auto] items-start gap-4 border-b border-black/10 pb-3">
-                    <div className="min-w-0">
-                      <p className="text-sm font-semibold leading-6 text-[#111315]">{item.name}</p>
-                      <p className="text-xs uppercase tracking-[0.18em] text-[#111315]/40">Special</p>
-                    </div>
-                    <p className="whitespace-nowrap text-sm font-semibold text-[#111315]">Rs {item.price}</p>
-                  </div>
-                ))}
-              </div>
+              <div className="mx-auto mt-3 h-px w-16 bg-[#111315]/20" />
             </div>
 
-            <div className="relative mx-auto aspect-[1.35/1] w-full max-w-sm overflow-hidden bg-[#e4eff6]">
-              <div className="absolute inset-4 z-10 rounded-[50%] border border-black/10" />
-              <Image
-                src="/images/chicken roast.jpg"
-                alt="Chicken Roast"
-                fill
-                priority
-                sizes="(min-width: 1024px) 380px, 70vw"
-                className="object-cover transition duration-700 hover:scale-105"
-              />
+            <div className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 lg:grid-cols-3">
+              {menuData.Special.map((item) => (
+                <div
+                  key={item.name}
+                  className="group flex flex-col items-center text-center"
+                >
+                  <div className="relative mb-3 aspect-square w-full overflow-hidden bg-[#e4eff6]">
+                    <Image
+                      src={item.image}
+                      alt={item.name}
+                      fill
+                      priority
+                      sizes="(min-width: 1024px) 280px, (min-width: 640px) 200px, 45vw"
+                      className="object-cover transition duration-500 group-hover:scale-105"
+                    />
+                  </div>
+                  <h3 className="mt-1 text-xs font-semibold leading-5 text-[#111315] sm:text-sm">
+                    {item.name}
+                  </h3>
+                  <p className="mt-1 text-xs font-bold text-[#111315] sm:text-sm">
+                    Rs {item.price}
+                  </p>
+                </div>
+              ))}
             </div>
           </section>
 
@@ -507,61 +512,53 @@ export default function MenuApp() {
             </p>
           )}
 
-          <section className="mt-10 grid gap-x-14 gap-y-16 lg:grid-cols-2">
-            {visibleSections.map((section, index) => {
-              const showImage = !normalizedSearch && index % 6 === 1
-              const imageSrc = featuredImages[index % featuredImages.length]
+          <section className="mt-10 space-y-16">
+            {visibleSections.map((section) => (
+              <article
+                id={section.category.toLowerCase().replace(/[^a-z0-9]+/g, '-')}
+                key={section.category}
+                className="scroll-mt-40"
+              >
+                {/* Category Header — centered with decorative line */}
+                <div className="mb-8 text-center">
+                  <h2 className="font-serif text-2xl font-light uppercase leading-tight text-[#111315] sm:text-3xl">
+                    {section.category}
+                  </h2>
+                  <div className="mx-auto mt-3 h-px w-16 bg-[#111315]/20" />
+                </div>
 
-              return (
-                <article
-                  id={section.category.toLowerCase().replace(/[^a-z0-9]+/g, '-')}
-                  key={section.category}
-                  className={`scroll-mt-40 ${showImage ? 'lg:grid lg:grid-cols-[0.92fr_1fr] lg:items-center lg:gap-8' : ''}`}
-                >
-                  {showImage && (
-                    <div className="relative mb-7 aspect-square max-w-[280px] mx-auto overflow-hidden bg-[#e4eff6] lg:mb-0">
-                      <div className="absolute inset-4 z-10 rounded-[50%] border border-black/10" />
-                      <Image
-                        src={imageSrc}
-                        alt=""
-                        fill
-                        sizes="(min-width: 1024px) 220px, 60vw"
-                        className="object-cover"
-                      />
-                    </div>
-                  )}
+                {/* Card Grid */}
+                <div className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 lg:grid-cols-4">
+                  {section.items.map((item) => (
+                    <div
+                      key={`${section.category}-${item.name}`}
+                      className="group flex flex-col items-center text-center"
+                    >
+                      {/* Image */}
+                      <div className="relative mb-3 aspect-square w-full overflow-hidden bg-[#e4eff6]">
+                        <Image
+                          src={item.image}
+                          alt={item.name}
+                          fill
+                          sizes="(min-width: 1024px) 220px, (min-width: 640px) 180px, 45vw"
+                          className="object-cover transition duration-500 group-hover:scale-105"
+                        />
+                      </div>
 
-                  <div className="min-w-0">
-                    <div className="mb-5 flex items-end justify-between gap-4">
-                      <h2 className="font-serif text-2xl font-light uppercase leading-tight text-[#111315] sm:text-3xl">
-                        {section.category}
-                      </h2>
-                      <span className="whitespace-nowrap text-[10px] font-semibold uppercase tracking-[0.18em] text-[#111315]/40">
-                        {section.items.length} items
-                      </span>
-                    </div>
+                      {/* Name */}
+                      <h3 className="mt-1 text-xs font-semibold leading-5 text-[#111315] sm:text-sm">
+                        {item.name}
+                      </h3>
 
-                    <div className="space-y-3">
-                      {section.items.map((item) => (
-                        <div
-                          key={`${section.category}-${item.name}`}
-                          className="group grid grid-cols-[minmax(0,1fr)_auto] items-start gap-4 border-b border-black/8 pb-3 transition duration-300 hover:border-black/20"
-                        >
-                          <div className="min-w-0">
-                            <h3 className="text-sm font-medium leading-6 text-[#111315] transition group-hover:text-[#111315]/70">
-                              {item.name}
-                            </h3>
-                          </div>
-                          <p className="max-w-[5.75rem] text-right text-xs font-semibold leading-5 text-[#111315] [overflow-wrap:anywhere] sm:max-w-[8.5rem] sm:text-sm sm:leading-6">
-                            Rs {item.price}
-                          </p>
-                        </div>
-                      ))}
+                      {/* Price */}
+                      <p className="mt-1 text-xs font-bold text-[#111315] sm:text-sm">
+                        Rs {item.price}
+                      </p>
                     </div>
-                  </div>
-                </article>
-              )
-            })}
+                  ))}
+                </div>
+              </article>
+            ))}
           </section>
 
           {visibleSections.length === 0 && (
@@ -630,7 +627,7 @@ export default function MenuApp() {
             </div>
             <div>
               <a className="block transition hover:text-white" href="#tea-coffee">Tea & Coffee</a>
-              <a className="block transition hover:text-white" href="#momos">Momos</a>
+              <a className="block transition hover:text-white" href="#momo">Momo</a>
               <a className="block transition hover:text-white" href="#nepali-thakali-khana">Thakali Khana</a>
             </div>
           </div>
