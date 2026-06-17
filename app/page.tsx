@@ -17,6 +17,9 @@ export default function MenuApp() {
   const [currentDate, setCurrentDate] = useState<string>('')
   const [greeting, setGreeting] = useState<string>('')
   const [showPaymentModal, setShowPaymentModal] = useState(false)
+  const [selectedAlcohol, setSelectedAlcohol] = useState<null | { name: string; sizes: string[]; image: string }>(null)
+  const [categories, setCategories] = useState<string[]>([])
+  const [menuPeriod, setMenuPeriod] = useState('Menu')
 
   useEffect(() => {
     const updateTime = () => {
@@ -34,6 +37,196 @@ export default function MenuApp() {
       else if (hour < 17) setGreeting('Good Afternoon')
       else if (hour < 21) setGreeting('Good Evening')
       else setGreeting('Good Night')
+
+      let orderedCategories: string[] = []
+
+      if (hour >= 7 && hour < 10) {
+        // Breakfast
+        orderedCategories = [
+          'Tea & Coffee',
+          'Omelette / Egg',
+          'Sandwich',
+          'Lassi',
+          'Juice',
+          'Milk Shake',
+          'Starter',
+          'Momo',
+          'Chowmein',
+          'Burger',
+          'Pizza',
+          'Thukpa',
+          'Fried Rice',
+          'Nepali Thakali Khana',
+          'Khaja Set',
+          'Biryani',
+          'Veg Items',
+          'Non Veg Items (Chicken)',
+          'Mutton',
+          'Pork',
+          'Buff',
+          'Soup',
+          'Taas',
+          'Sekuwa',
+          'Sadeko',
+          'Salad',
+          'Soft Drinks',
+          'Beer',
+          'Wine',
+          'Whiskey / Vodka',
+          'Hookah',
+        ]
+        setMenuPeriod('Breakfast Menu')
+      } else if (hour >= 10 && hour < 12) {
+        // Early Dinner / Main Course Focus
+        orderedCategories = [
+          'Nepali Thakali Khana',
+          'Khaja Set',
+          'Biryani',
+          'Veg Items',
+          'Non Veg Items (Chicken)',
+          'Mutton',
+          'Pork',
+          'Buff',
+          'Soup',
+          'Tea & Coffee',
+          'Lassi',
+          'Juice',
+          'Milk Shake',
+          'Momo',
+          'Chowmein',
+          'Kati Roll',
+          'Burger',
+          'Pizza',
+          'Thukpa',
+          'Fried Rice',
+          'Taas',
+          'Sekuwa',
+          'Sadeko',
+          'Salad',
+          'Soft Drinks',
+          'Beer',
+          'Wine',
+          'Whiskey / Vodka',
+          'Hookah',
+        ]
+        setMenuPeriod('Main Course Menu')
+      } else if (hour >= 12 && hour < 16) {
+        // Momo / Chowmein / Brunch Snacks
+        orderedCategories = [
+          'Momo',
+          'Chowmein',
+          'Kati Roll',
+          'Burger',
+          'Pizza',
+          'Thukpa',
+          'Fried Rice',
+          'Starter',
+          'Tea & Coffee',
+          'Lassi',
+          'Juice',
+          'Milk Shake',
+          'Nepali Thakali Khana',
+          'Khaja Set',
+          'Biryani',
+          'Veg Items',
+          'Non Veg Items (Chicken)',
+          'Mutton',
+          'Pork',
+          'Buff',
+          'Soup',
+          'Taas',
+          'Sekuwa',
+          'Sadeko',
+          'Salad',
+          'Soft Drinks',
+          'Beer',
+          'Wine',
+          'Whiskey / Vodka',
+          'Hookah',
+        ]
+        setMenuPeriod('Brunch & Snacks Menu')
+      } else if (hour >= 16 && hour < 20) {
+        // Evening Snacks
+        orderedCategories = [
+          'Starter',
+          'Momo',
+          'Chowmein',
+          'Kati Roll',
+          'Burger',
+          'Pizza',
+          'Thukpa',
+          'Fried Rice',
+          'Taas',
+          'Sekuwa',
+          'Sadeko',
+          'Tea & Coffee',
+          'Lassi',
+          'Juice',
+          'Milk Shake',
+          'Salad',
+          'Nepali Thakali Khana',
+          'Khaja Set',
+          'Biryani',
+          'Veg Items',
+          'Non Veg Items (Chicken)',
+          'Mutton',
+          'Pork',
+          'Buff',
+          'Soup',
+          'Soft Drinks',
+          'Beer',
+          'Wine',
+          'Whiskey / Vodka',
+          'Hookah',
+        ]
+        setMenuPeriod('Evening Snacks Menu')
+      } else if (hour >= 20 && hour < 22) {
+        // Dinner
+        orderedCategories = [
+          'Nepali Thakali Khana',
+          'Khaja Set',
+          'Mutton',
+          'Pork',
+          'Buff',
+          'Non Veg Items (Chicken)',
+          'Biryani',
+          'Soup',
+          'Taas',
+          'Sekuwa',
+          'Sadeko',
+          'Momo',
+          'Chowmein',
+          'Fried Rice',
+          'Pizza',
+          'Burger',
+          'Tea & Coffee',
+          'Lassi',
+          'Juice',
+          'Milk Shake',
+          'Salad',
+          'Soft Drinks',
+          'Beer',
+          'Wine',
+          'Whiskey / Vodka',
+          'Hookah',
+        ]
+        setMenuPeriod('Dinner Menu')
+      } else {
+        // Late Night / Default
+        orderedCategories = [
+          'Tea & Coffee',
+          'Momo',
+          'Nepali Thakali Khana',
+          'Khaja Set',
+          'Soft Drinks',
+          'Beer',
+          'Wine',
+          'Whiskey / Vodka',
+          'Hookah',
+        ]
+        setMenuPeriod('Late Night Menu')
+      }
+      setCategories(orderedCategories)
     }
 
     updateTime()
@@ -41,47 +234,13 @@ export default function MenuApp() {
     return () => clearInterval(interval)
   }, [])
 
-  const categories = [
-    'Special',
-    'Tea & Coffee',
-    'Soft Drinks',
-    'Starter',
-    'Veg Items',
-    'Non Veg Items (Chicken)',
-    'Momo',
-    'Chowmein',
-    'Kati Roll',
-    'Thukpa',
-    'Pizza',
-    'Burger',
-    'Sandwich',
-    'Biryani',
-    'Nepali Thakali Khana',
-    'Soup',
-    'Salad',
-    'Lassi',
-    'Milk Shake',
-    'Juice',
-    'Beer',
-    'Wine',
-    'Whiskey / Vodka',
-    'Fried Rice',
-    'Omelette / Egg',
-    'Mutton',
-    'Pork',
-    'Buff',
-    'Sekuwa',
-    'Khaja Set',
-    'Taas',
-    'Sadeko',
-    'Hookah',
-  ]
 
   const menuData = {
     'Special': [
       { name: 'Tawa Pork', price: '400', image: '/images/pork tawa.jpg', popular: true },
       { name: 'Chicken Biryani', price: '500', image: '/images/mutton biryani.jpg', popular: true },
       { name: 'Mutton Khaja Set', price: '600', image: '/images/mutton khaja set.jpg', popular: true },
+      { name: 'Potato Spiral with Seasoning', price: '100', image: '/images/potatospiral.jpeg' },
     ],
     'Tea & Coffee': [
       { name: 'Milk Tea', price: '40', image: '/images/milk tea.jpg' },
@@ -108,7 +267,7 @@ export default function MenuApp() {
       { name: 'Papad Dry / Masala / Fry', price: '50 / 100 / 60', image: '/images/papad(fry,dry,masala).jpg' },
       { name: 'Peanut Plain / Sadeko', price: '100 / 180', image: '/images/peanut sadeko.jpg' },
       { name: 'Kaju Plain / Fry', price: '250 / 300', image: '/images/kaju fry.jpg' },
-      { name: 'Potato Spiral with Seasoning', price: '100', image: '/images/aalu fry.jpg' },
+      { name: 'Potato Spiral with Seasoning', price: '100', image: '/images/potatospiral.jpeg' },
     ],
     'Veg Items': [
       { name: 'Aalu Jeera', price: '150', image: '/images/aalu jeera.jpg' },
@@ -249,14 +408,102 @@ export default function MenuApp() {
       { name: 'Canvas 750ml', price: '1100', image: '/images/canvas 750ml.jpeg' },
     ],
     'Whiskey / Vodka': [
-      { name: 'Golden Oak 60 / 90 / 180 / 375 / 750ml', price: '200 / 250 / 400 / 800 / 1600', image: '/images/golden oak.jpeg' },
-      { name: 'Old Durbar Red 60 / 90 / 180 / 375 / 750ml', price: '280 / 430 / 800 / 1600 / 3200', image: '/images/old durbar red.jpeg' },
-      { name: 'Old Durbar Black 60 / 90 / 180 / 375 / 750ml', price: '380 / 550 / 1050 / 2050 / 4100', image: '/images/old durbar black.jpeg' },
-      { name: '8848 Vodka 60 / 90 / 180 / 375 / 750ml', price: '270 / 400 / 750 / 1500 / 3000', image: '/images/8848 vodka.jpg' },
-      { name: 'Khukri Rum 60 / 90 / 180 / 375 / 750ml', price: '250 / 350 / 700 / 1350 / 2700', image: '/images/khukuri rum.jpeg' },
-      { name: 'Signature Red 60 / 90 / 180 / 375 / 750ml', price: '280 / 430 / 800 / 1600 / 3200', image: '/images/signature red.jpeg' },
-      { name: 'Mustang 60 / 90 / 180 / 375 / 750ml', price: '150 / 200 / 400 / 800 / 1600', image: '/images/mustang.jpeg' },
-      { name: 'Highlander 60 / 90 / 180 / 375 / 750ml', price: '140 / 200 / 375 / 750 / 1500', image: '/images/highlander.jpeg' },
+      {
+        name: 'Golden Oak',
+        price: 'Starting Rs 150',
+        sizes: [
+          '60ml - Rs 150',
+          '90ml - Rs 250',
+          '180ml - Rs 400',
+          '375ml - Rs 800',
+          '750ml - Rs 1600',
+        ],
+        image: '/images/golden oak.jpeg'
+      },
+      {
+        name: 'Old Durbar Red',
+        price: 'Starting Rs 280',
+        sizes: [
+          '60ml - Rs 280',
+          '90ml - Rs 420',
+          '180ml - Rs 800',
+          '375ml - Rs 1600',
+          '750ml - Rs 3200',
+        ],
+        image: '/images/old durbar red.jpeg'
+      },
+      {
+        name: 'Old Durbar Black',
+        price: 'Starting Rs 370',
+        sizes: [
+          '60ml - Rs 370',
+          '90ml - Rs 550',
+          '180ml - Rs 1050',
+          '375ml - Rs 2100',
+          '750ml - Rs 4200',
+        ],
+        image: '/images/old durbar black.jpeg'
+      },
+      {
+        name: '8848 Vodka',
+        price: 'Starting Rs 270',
+        sizes: [
+          '60ml - Rs 270',
+          '90ml - Rs 390',
+          '180ml - Rs 750',
+          '375ml - Rs 1500',
+          '750ml - Rs 3000',
+        ],
+        image: '/images/8848 vodka.jpg'
+      },
+      {
+        name: 'Khukri Rum',
+        price: 'Starting Rs 230',
+        sizes: [
+          '60ml - Rs 230',
+          '90ml - Rs 350',
+          '180ml - Rs 650',
+          '375ml - Rs 1300',
+          '750ml - Rs 2600',
+        ],
+        image: '/images/khukuri rum.jpeg'
+      },
+      {
+        name: 'Signature Red',
+        price: 'Starting Rs 280',
+        sizes: [
+          '60ml - Rs 280',
+          '90ml - Rs 420',
+          '180ml - Rs 800',
+          '375ml - Rs 1600',
+          '750ml - Rs 3200',
+        ],
+        image: '/images/signature red.jpeg'
+      },
+      {
+        name: 'Mustang',
+        price: 'Starting Rs 150',
+        sizes: [
+          '60ml - Rs 150',
+          '90ml - Rs 250',
+          '180ml - Rs 400',
+          '375ml - Rs 800',
+          '750ml - Rs 1600',
+        ],
+        image: '/images/mustang.jpeg'
+      },
+      {
+        name: 'Highlander',
+        price: 'Starting Rs 150',
+        sizes: [
+          '60ml - Rs 150',
+          '90ml - Rs 250',
+          '180ml - Rs 400',
+          '375ml - Rs 800',
+          '750ml - Rs 1600',
+        ],
+        image: '/images/highlander.jpeg'
+      },
     ],
     'Fried Rice': [
       { name: 'Veg Fried Rice', price: '200', image: '/images/veg fried rice.jpg' },
@@ -417,7 +664,10 @@ export default function MenuApp() {
             <h1 className="font-serif text-6xl font-light uppercase leading-none text-[#111315] sm:text-7xl lg:text-8xl">
               Menu
             </h1>
-            <p className="mx-auto mt-5 max-w-xl text-sm leading-7 text-[#111315]/60">
+            <p className="mt-4 text-[11px] font-semibold uppercase tracking-[0.28em] text-[#111315]/60">
+              {menuPeriod}
+            </p>
+            <p className="mx-auto mt-4 max-w-xl text-sm leading-7 text-[#111315]/60">
               Complete single-page menu with live search, clear pricing, and QR payment options.
             </p>
           </section>
@@ -538,8 +788,19 @@ export default function MenuApp() {
 
                       {/* Price */}
                       <p className="mt-1 text-xs font-bold text-[#111315] sm:text-sm">
-                        Rs {item.price}
+                        {section.category === 'Whiskey / Vodka' ? item.price : `Rs ${item.price}`}
                       </p>
+
+                      {/* For Whiskey / Vodka, show View Sizes button */}
+                      {section.category === 'Whiskey / Vodka' && (
+                        <button
+                          onClick={() => setSelectedAlcohol(item as { name: string; sizes: string[]; image: string })}
+                          className="mt-2 inline-block border border-[#111315] rounded px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.10em] text-[#111315] hover:bg-[#111315] hover:text-white transition focus:outline-none"
+                          style={{ fontSize: '11px' }}
+                        >
+                          View Sizes
+                        </button>
+                      )}
                     </div>
                   ))}
                 </div>
@@ -666,6 +927,50 @@ export default function MenuApp() {
                   </a>
                 </div>
               ))}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Alcohol Sizes Modal */}
+      {selectedAlcohol && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#111315]/70 backdrop-blur-sm animate-fade-in">
+          <div className="relative w-full max-w-md bg-[#f0f6fa] rounded-lg shadow-2xl animate-scale-up p-6">
+            <button
+              className="absolute top-3 right-3 flex h-9 w-9 items-center justify-center border border-black/10 rounded-full text-[#111315] hover:bg-[#111315] hover:text-white hover:border-[#111315] transition"
+              onClick={() => setSelectedAlcohol(null)}
+              aria-label="Close alcohol sizes modal"
+            >
+              <X className="h-4 w-4" />
+            </button>
+            <div className="flex flex-col items-center">
+              <Image
+                src={selectedAlcohol.image}
+                alt={selectedAlcohol.name}
+                width={80}
+                height={80}
+                className="mb-2 h-20 w-20 rounded-full object-cover ring-1 ring-black/10"
+              />
+              <h2 className="mb-2 mt-1 font-serif text-xl font-light uppercase text-[#111315] text-center">{selectedAlcohol.name}</h2>
+              <table className="w-full mt-3 border border-black/10 bg-white rounded text-xs">
+                <thead>
+                  <tr>
+                    <th className="px-3 py-2 border-b border-black/10 text-left font-semibold">Size</th>
+                    <th className="px-3 py-2 border-b border-black/10 text-left font-semibold">Price</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {selectedAlcohol.sizes.map((sz) => {
+                    const [size, price] = sz.split(' - ');
+                    return (
+                      <tr key={sz}>
+                        <td className="px-3 py-2 border-b border-black/10">{size}</td>
+                        <td className="px-3 py-2 border-b border-black/10">{price}</td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
