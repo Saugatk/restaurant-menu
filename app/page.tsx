@@ -293,7 +293,7 @@ export default function MenuApp() {
     ],
     'Momo': [
       { name: 'Chicken Momo Steam', price: '140', image: '/images/chickenmomosteam.jpg' },
-      { name: 'Chicken Momo Fried', price: '150', image: '/images/chilly momo.jpg' },
+      { name: 'Chicken Momo Fried', price: '150', image: '/images/chicken-fry-momo.jpg' },
       { name: 'Chicken Momo Kothey', price: '180', image: '/images/chicken khote momo.jpg' },
       { name: 'Chicken Momo Jhol', price: '160', image: '/images/chicken jhol momo.jpg' },
       { name: 'Chicken Momo C', price: '180', image: '/images/chicken momo c.jpg' },
@@ -349,7 +349,7 @@ export default function MenuApp() {
     'Biryani': [
       { name: 'Veg Biryani', price: '400', image: '/images/veg biryani.jpg' },
       { name: 'Chicken Biryani', price: '500', image: '/images/mutton biryani.jpg' },
-      { name: 'Mutton Biryani', price: '600', image: '/images/mutton biryani.jpg' },
+      { name: 'Mutton Biryani', price: '600', image: '/images/muttonbiryani.jpeg' },
       { name: 'Egg Biryani', price: '400', image: '/images/egg biryani.jpg' },
     ],
     'Nepali Thakali Khana': [
@@ -361,8 +361,8 @@ export default function MenuApp() {
     ],
     'Soup': [
       { name: 'Veg Soup', price: '120', image: '/images/veg soup.jpg' },
-      { name: 'Mushroom Soup', price: '150', image: '/images/mushroom soup.jpg' },
-      { name: 'Chicken Soup', price: '180', image: '/images/chicken soup.jpg' },
+      { name: 'Mushroom Soup', price: '150', image: '/images/mushroomsoup.webp' },
+      { name: 'Chicken Soup', price: '180', image: '/images/chickensoup.jpg' },
       { name: 'Mutton Soup', price: '200', image: '/images/mutton soup.jpg' },
       { name: 'Mixed Soup', price: '250', image: '/images/mushroom soup.jpg' },
     ],
@@ -507,7 +507,7 @@ export default function MenuApp() {
     'Fried Rice': [
       { name: 'Veg Fried Rice', price: '200', image: '/images/veg fried rice.jpg' },
       { name: 'Egg Fried Rice', price: '250', image: '/images/egg fried rice.jpg' },
-      { name: 'Buff Fried Rice', price: '300', image: '/images/Buff Chicken Fried Rice.jpg' },
+      { name: 'Buff Fried Rice', price: '300', image: '/images/bufffryrice.jpg' },
       { name: 'Chicken Fried Rice', price: '300', image: '/images/chicken fried rice.jpg' },
       { name: 'Mixed Fried Rice', price: '350', image: '/images/chinese fried rice.jpg' },
     ],
@@ -542,15 +542,15 @@ export default function MenuApp() {
     ],
     'Khaja Set': [
       { name: 'Chicken Khaja Set', price: '450', image: '/images/chicken khaja set.jpg' },
-      { name: 'Mutton Khaja Set', price: '600', image: '/images/mutton khaja set.jpg' },
+      { name: 'Mutton Khaja Set', price: '600', image: '/images/muttonkhajaset.jpg' },
       { name: 'Veg Khaja Set', price: '300', image: '/images/veg khaja set.jpg' },
       { name: 'Buff Khaja Set', price: '500', image: '/images/Buff Khaja Set.jpg' },
       { name: 'Pork Khaja Set', price: '500', image: '/images/pork khaja set.jpg' },
     ],
     'Taas': [
       { name: 'Chicken Taas', price: '300', image: '/images/chicken taas.jpg' },
-      { name: 'Mutton Taas', price: '450', image: '/images/muttontaas.jpg' },
-      { name: 'Pork Taas', price: '400', image: '/images/pork fry.jpg' },
+      { name: 'Mutton Taas', price: '450', image: '/images/muttontaass.jpg' },
+      { name: 'Pork Taas', price: '400', image: '/images/porktaas.jpg' },
     ],
     'Sadeko': [
       { name: 'Peanuts Sadeko', price: '150', image: '/images/peanuts sadeko.jpg' },
