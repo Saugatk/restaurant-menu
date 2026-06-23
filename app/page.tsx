@@ -37,207 +37,55 @@ export default function MenuApp() {
       else if (hour < 17) setGreeting('Good Afternoon')
       else if (hour < 21) setGreeting('Good Evening')
       else setGreeting('Good Night')
-
-      let orderedCategories: string[] = []
-
-      if (hour >= 7 && hour < 10) {
-        // Breakfast
-        orderedCategories = [
-          'Tea & Coffee',
-          'Omelette / Egg',
-          'Sandwich',
-          'Lassi',
-          'Juice',
-          'Milk Shake',
-          'Starter',
-          'Momo',
-          'Chowmein',
-          'Burger',
-          'Pizza',
-          'Thukpa',
-          'Fried Rice',
-          'Nepali Thakali Khana',
-          'Khaja Set',
-          'Biryani',
-          'Veg Items',
-          'Non Veg Items (Chicken)',
-          'Mutton',
-          'Pork',
-          'Buff',
-          'Soup',
-          'Taas',
-          'Sekuwa',
-          'Sadeko',
-          'Salad',
-          'Soft Drinks',
-          'Beer',
-          'Wine',
-          'Whiskey / Vodka',
-          'Hookah',
-        ]
-        setMenuPeriod('Breakfast Menu')
-      } else if (hour >= 10 && hour < 12) {
-        // Early Dinner / Main Course Focus
-        orderedCategories = [
-          'Nepali Thakali Khana',
-          'Khaja Set',
-          'Biryani',
-          'Veg Items',
-          'Non Veg Items (Chicken)',
-          'Mutton',
-          'Pork',
-          'Buff',
-          'Soup',
-          'Tea & Coffee',
-          'Lassi',
-          'Juice',
-          'Milk Shake',
-          'Momo',
-          'Chowmein',
-          'Kati Roll',
-          'Burger',
-          'Pizza',
-          'Thukpa',
-          'Fried Rice',
-          'Taas',
-          'Sekuwa',
-          'Sadeko',
-          'Salad',
-          'Soft Drinks',
-          'Beer',
-          'Wine',
-          'Whiskey / Vodka',
-          'Hookah',
-        ]
-        setMenuPeriod('Main Course Menu')
-      } else if (hour >= 12 && hour < 16) {
-        // Momo / Chowmein / Brunch Snacks
-        orderedCategories = [
-          'Momo',
-          'Chowmein',
-          'Kati Roll',
-          'Burger',
-          'Pizza',
-          'Thukpa',
-          'Fried Rice',
-          'Starter',
-          'Tea & Coffee',
-          'Lassi',
-          'Juice',
-          'Milk Shake',
-          'Nepali Thakali Khana',
-          'Khaja Set',
-          'Biryani',
-          'Veg Items',
-          'Non Veg Items (Chicken)',
-          'Mutton',
-          'Pork',
-          'Buff',
-          'Soup',
-          'Taas',
-          'Sekuwa',
-          'Sadeko',
-          'Salad',
-          'Soft Drinks',
-          'Beer',
-          'Wine',
-          'Whiskey / Vodka',
-          'Hookah',
-        ]
-        setMenuPeriod('Brunch & Snacks Menu')
-      } else if (hour >= 16 && hour < 20) {
-        // Evening Snacks
-        orderedCategories = [
-          'Starter',
-          'Momo',
-          'Chowmein',
-          'Kati Roll',
-          'Burger',
-          'Pizza',
-          'Thukpa',
-          'Fried Rice',
-          'Taas',
-          'Sekuwa',
-          'Sadeko',
-          'Tea & Coffee',
-          'Lassi',
-          'Juice',
-          'Milk Shake',
-          'Salad',
-          'Nepali Thakali Khana',
-          'Khaja Set',
-          'Biryani',
-          'Veg Items',
-          'Non Veg Items (Chicken)',
-          'Mutton',
-          'Pork',
-          'Buff',
-          'Soup',
-          'Soft Drinks',
-          'Beer',
-          'Wine',
-          'Whiskey / Vodka',
-          'Hookah',
-        ]
-        setMenuPeriod('Evening Snacks Menu')
-      } else if (hour >= 20 && hour < 22) {
-        // Dinner
-        orderedCategories = [
-          'Nepali Thakali Khana',
-          'Khaja Set',
-          'Mutton',
-          'Pork',
-          'Buff',
-          'Non Veg Items (Chicken)',
-          'Biryani',
-          'Soup',
-          'Taas',
-          'Sekuwa',
-          'Sadeko',
-          'Momo',
-          'Chowmein',
-          'Fried Rice',
-          'Pizza',
-          'Burger',
-          'Tea & Coffee',
-          'Lassi',
-          'Juice',
-          'Milk Shake',
-          'Salad',
-          'Soft Drinks',
-          'Beer',
-          'Wine',
-          'Whiskey / Vodka',
-          'Hookah',
-        ]
-        setMenuPeriod('Dinner Menu')
-      } else {
-        // Late Night / Default
-        orderedCategories = [
-          'Tea & Coffee',
-          'Momo',
-          'Nepali Thakali Khana',
-          'Khaja Set',
-          'Soft Drinks',
-          'Beer',
-          'Wine',
-          'Whiskey / Vodka',
-          'Hookah',
-        ]
-        setMenuPeriod('Late Night Menu')
-      }
-      setCategories(orderedCategories)
     }
 
     updateTime()
     const interval = setInterval(updateTime, 1000)
+
+    // Always start with Breakfast section for now
+    const orderedCategories = [
+      'Tea & Coffee',
+      'Omelette / Egg',
+      'Sandwich',
+      'Lassi',
+      'Juice',
+      'Milk Shake',
+      'Starter',
+      'Momo',
+      'Chowmein',
+      'Burger',
+      'Pizza',
+      'Thukpa',
+      'Fried Rice',
+      'Nepali Thakali Khana',
+      'Khaja Set',
+      'Biryani',
+      'Veg Items',
+      'Non Veg Items (Chicken)',
+      'Mutton',
+      'Pork',
+      'Buff',
+      'Soup',
+      'Taas',
+      'Sekuwa',
+      'Sadeko',
+      'Salad',
+      'Soft Drinks',
+      'Beer',
+      'Wine',
+      'Whiskey / Vodka',
+      'Hookah',
+    ]
+    setMenuPeriod('Breakfast Menu')
+    setCategories(orderedCategories)
+
     return () => clearInterval(interval)
   }, [])
 
 
   const menuData = {
     'Special': [
-      { name: 'Tawa Pork', price: '400', image: '/images/pork tawa.jpg', popular: true },
+      { name: 'Tawa Pork', price: '400', image: '/images/tawapork.jpeg', popular: true },
       { name: 'Chicken Biryani', price: '500', image: '/images/mutton biryani.jpg', popular: true },
       { name: 'Mutton Khaja Set', price: '600', image: '/images/mutton khaja set.jpg', popular: true },
       { name: 'Potato Spiral with Seasoning', price: '100', image: '/images/potatospiral.jpeg' },
@@ -296,17 +144,17 @@ export default function MenuApp() {
       { name: 'Chicken Momo Fried', price: '150', image: '/images/chicken-fry-momo.jpg' },
       { name: 'Chicken Momo Kothey', price: '180', image: '/images/chicken khote momo.jpg' },
       { name: 'Chicken Momo Jhol', price: '160', image: '/images/chicken jhol momo.jpg' },
-      { name: 'Chicken Momo C', price: '180', image: '/images/chicken momo c.jpg' },
+      { name: 'Chicken Momo C', price: '180', image: '/images/chickenmomoc.jpeg' },
       { name: 'Buff Momo Steam', price: '140', image: '/images/buff steam momo.jpg' },
       { name: 'Buff Momo Fried', price: '150', image: '/images/buff momo fired.jpg' },
       { name: 'Buff Momo Kothey', price: '180', image: '/images/buff khote momo.jpg' },
       { name: 'Buff Momo Jhol', price: '160', image: '/images/buff jhol momo.jpg' },
-      { name: 'Buff Momo C', price: '180', image: '/images/buff momo c.jpg' },
+      { name: 'Buff Momo C', price: '180', image: '/images/buffmomoc.jpeg' },
       { name: 'Veg Momo Steam', price: '120', image: '/images/veg momo.jpg' },
       { name: 'Veg Momo Fried', price: '130', image: '/images/fry veg momo.jpg' },
       { name: 'Veg Momo Kothey', price: '140', image: '/images/veg momo kothey.jpg' },
       { name: 'Veg Momo Jhol', price: '150', image: '/images/veg jhol momo.jpg' },
-      { name: 'Veg Momo C', price: '150', image: '/images/veg momo c.jpg' },
+      { name: 'Veg Momo C', price: '150', image: '/images/vegmomoc.jpeg' },
     ],
     'Chowmein': [
       { name: 'Veg Chowmein', price: '120', image: '/images/veg chowmein.jpeg' },
@@ -642,6 +490,13 @@ export default function MenuApp() {
                 <Smartphone className="h-3.5 w-3.5" />
                 Pay
               </button>
+              <button
+                onClick={() => window.print()}
+                className="inline-flex h-9 items-center gap-2 border border-[#111315] bg-[#111315] px-5 text-[10px] font-semibold uppercase tracking-[0.12em] text-white transition hover:opacity-80 focus:outline-none"
+              >
+                <Download className="h-3.5 w-3.5" />
+                Download PDF
+              </button>
             </div>
           </nav>
 
@@ -688,7 +543,7 @@ export default function MenuApp() {
                   key={item.name}
                   className="group flex flex-col items-center text-center"
                 >
-                  <div className="relative mb-3 aspect-square w-full overflow-hidden bg-[#e4eff6]">
+                  <div className="relative mb-3 aspect-square w-32 sm:w-40 mx-auto overflow-hidden bg-[#e4eff6]">
                     <Image
                       src={item.image}
                       alt={item.name}
@@ -768,7 +623,7 @@ export default function MenuApp() {
                       className="group flex flex-col items-center text-center"
                     >
                       {/* Image */}
-                      <div className="relative mb-3 aspect-square w-full overflow-hidden bg-[#e4eff6]">
+                      <div className="relative mb-3 aspect-square w-24 sm:w-28 lg:w-32 mx-auto overflow-hidden bg-[#e4eff6]">
                         <Image
                           src={item.image}
                           alt={item.name}
@@ -784,19 +639,43 @@ export default function MenuApp() {
                       </h3>
 
                       {/* Price */}
-                      <p className="mt-1 text-xs font-bold text-[#111315] sm:text-sm">
+                      <p className="mt-1 text-xs font-bold text-[#111315] sm:text-sm print:hidden">
                         {section.category === 'Whiskey / Vodka' ? item.price : `Rs ${item.price}`}
                       </p>
+                      
+                      {/* Only for non-alcohol items, show price in print (alcohol will show full sizes list) */}
+                      {section.category !== 'Whiskey / Vodka' && (
+                        <p className="mt-1 hidden text-xs font-bold text-[#111315] sm:text-sm print:block">
+                          Rs {item.price}
+                        </p>
+                      )}
 
-                      {/* For Whiskey / Vodka, show View Sizes button */}
+                      {/* For Whiskey / Vodka, show View Sizes button and Print-only sizes list */}
                       {section.category === 'Whiskey / Vodka' && (
-                        <button
-                          onClick={() => setSelectedAlcohol(item as { name: string; sizes: string[]; image: string })}
-                          className="mt-2 inline-block border border-[#111315] rounded px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.10em] text-[#111315] hover:bg-[#111315] hover:text-white transition focus:outline-none"
-                          style={{ fontSize: '11px' }}
-                        >
-                          View Sizes
-                        </button>
+                        <>
+                          <button
+                            onClick={() => setSelectedAlcohol(item as { name: string; sizes: string[]; image: string })}
+                            className="mt-2 inline-block border border-[#111315] rounded px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.10em] text-[#111315] hover:bg-[#111315] hover:text-white transition focus:outline-none print:hidden"
+                            style={{ fontSize: '11px' }}
+                          >
+                            View Sizes
+                          </button>
+                          
+                          {/* Print-only size list for Whiskey / Vodka */}
+                          {(item as any).sizes && (
+                            <div className="mt-2 hidden w-full px-1 text-left text-[9px] leading-tight text-[#111315] print:block">
+                              {(item as any).sizes.map((sz: string) => {
+                                const [size, price] = sz.split(' - ')
+                                return (
+                                  <div key={sz} className="flex justify-between border-b border-black/10 py-1">
+                                    <span>{size}</span>
+                                    <span className="font-semibold">{price}</span>
+                                  </div>
+                                )
+                              })}
+                            </div>
+                          )}
+                        </>
                       )}
                     </div>
                   ))}
@@ -987,6 +866,72 @@ export default function MenuApp() {
       <style>{`
         html {
           scroll-behavior: smooth;
+        }
+        @media print {
+          @page { margin: 10mm; }
+          body { 
+            background: white !important; 
+            color: black !important;
+            font-size: 10pt;
+          }
+          /* Hide non-printable elements */
+          nav, header > p:last-child, #payment, footer, .sticky, button, input { 
+            display: none !important; 
+          }
+          a[href^="https://wa.me"] {
+            display: none !important;
+          }
+
+          /* Force left alignment and full width */
+          .max-w-6xl { max-width: none !important; }
+          .mx-auto { margin-left: 0 !important; margin-right: 0 !important; }
+          .text-center { text-align: left !important; }
+          .items-center { align-items: flex-start !important; }
+          
+          /* Make images smaller and add breathing space */
+          .aspect-square { 
+            width: 85% !important; 
+            max-width: 140px !important; 
+            margin-bottom: 12px !important; 
+          }
+
+          /* Adjust grid for printing to fit perfectly across 8 pages at 50% scale */
+          .grid {
+            display: flex !important;
+            flex-wrap: wrap !important;
+            gap: 25px 15px !important;
+            justify-content: flex-start !important;
+          }
+          .grid > div {
+            width: calc(16.666% - 15px) !important; /* 6 columns */
+            page-break-inside: avoid;
+            break-inside: avoid;
+            margin-bottom: 15px !important;
+          }
+          article {
+            page-break-inside: auto;
+            break-inside: auto;
+            margin-bottom: 30px !important;
+            padding-top: 15px !important;
+          }
+          /* Prevent category header from being orphaned from its items on page breaks */
+          article > div.mb-8 { 
+            margin-bottom: 15px !important; 
+            page-break-after: avoid !important;
+            break-after: avoid !important;
+          }
+          
+          /* Ensure text and headings fit well */
+          h1 { font-size: 24pt !important; margin-bottom: 10px !important; }
+          h2 { font-size: 18pt !important; margin-bottom: 2px !important; text-align: left !important; }
+          h3 { font-size: 12pt !important; margin-top: 5px !important; margin-bottom: 0 !important; text-align: left !important; }
+          p { font-size: 10pt !important; margin: 0 !important; text-align: left !important; }
+          
+          /* Show borders and backgrounds */
+          * {
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+          }
         }
         @keyframes fade-in {
           from { opacity: 0; }
