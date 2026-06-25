@@ -118,7 +118,7 @@ export default function MenuApp() {
     ],
     'Non Veg Items (Chicken)': [
       { name: 'Chicken Roast', price: '350', image: '/images/chickenroast.jpeg' },
-      { name: 'Chicken Boil', price: '300', image: '/images/chicken boil.jpg' },
+      { name: 'Chicken Boil', price: '300', image: '/images/chickenboil.jpeg' },
       { name: 'Chicken Chilli', price: '380', image: '/images/Chicken Chilly.jpg' },
       { name: 'Chicken Choila', price: '300', image: '/images/chicken choila.jpg' },
       { name: 'Chicken Leg Piece Fry, 2 pcs', price: '400', image: '/images/chicken leg piece fry(2 pcs).jpg' },
