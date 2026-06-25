@@ -39,7 +39,7 @@ export default function MenuApp() {
     const orderedCategories = [
       'Tea & Coffee',
       'Omelette / Egg',
-      'Katti Roll',
+      'Kathi Roll',
       'Sandwich',
       'Lassi',
       'Juice',
@@ -155,11 +155,11 @@ export default function MenuApp() {
       { name: 'Egg Chowmein', price: '140', image: '/images/egg chowmin.jpg' },
       { name: 'Mixed Chowmein', price: '200', image: '/images/mix chowmin.jpg' },
     ],
-    'Katti Roll': [
-      { name: 'Paneer Katti Roll', price: '230', image: '/images/placeholder.jpg' },
-      { name: 'Veg Katti Roll', price: '180', image: '/images/placeholder.jpg' },
-      { name: 'Egg Katti Roll', price: '200', image: '/images/placeholder.jpg' },
-      { name: 'Chicken Katti Roll', price: '250', image: '/images/placeholder.jpg' },
+    'Kathi Roll': [
+      { name: 'Paneer Kathi Roll', price: '230', image: '/images/paneerkathi.jpeg' },
+      { name: 'Veg Kathi Roll', price: '180', image: '/images/vegkathi.jpg' },
+      { name: 'Egg Kathi Roll', price: '200', image: '/images/eggkathi.webp' },
+      { name: 'Chicken Kathi Roll', price: '250', image: '/images/chickenkathi.webp' },
     ],
     'Thukpa': [
       { name: 'Veg Thukpa', price: '140', image: '/images/veg thukpa.jpg' },
