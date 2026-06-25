@@ -39,6 +39,7 @@ export default function MenuApp() {
     const orderedCategories = [
       'Tea & Coffee',
       'Omelette / Egg',
+      'Katti Roll',
       'Sandwich',
       'Lassi',
       'Juice',
@@ -80,7 +81,7 @@ export default function MenuApp() {
     'Special': [
       { name: 'Tawa Pork', price: '400', image: '/images/tawapork.jpeg', popular: true },
       { name: 'Chicken Biryani', price: '500', image: '/images/mutton biryani.jpg', popular: true },
-      { name: 'Mutton Khaja Set', price: '600', image: '/images/mutton khaja set.jpg', popular: true },
+      { name: 'Grilled Fish', price: '600', image: '/images/grilledfish.jpeg', popular: true },
       { name: 'Potato Spiral with Seasoning', price: '100', image: '/images/potatospiral.jpeg' },
     ],
     'Tea & Coffee': [
@@ -154,18 +155,18 @@ export default function MenuApp() {
       { name: 'Egg Chowmein', price: '140', image: '/images/egg chowmin.jpg' },
       { name: 'Mixed Chowmein', price: '200', image: '/images/mix chowmin.jpg' },
     ],
-    'Kati Roll': [
-      { name: 'Veg', price: '180', image: '/images/veg kathi roll.jpg' },
-      { name: 'Chicken', price: '250', image: '/images/chicken kathi roll.jpg' },
-      { name: 'Egg', price: '200', image: '/images/egg kathi roll.jpg' },
-      { name: 'Paneer', price: '230', image: '/images/paneer kathi roll.jpg' },
+    'Katti Roll': [
+      { name: 'Paneer Katti Roll', price: '230', image: '/images/placeholder.jpg' },
+      { name: 'Veg Katti Roll', price: '180', image: '/images/placeholder.jpg' },
+      { name: 'Egg Katti Roll', price: '200', image: '/images/placeholder.jpg' },
+      { name: 'Chicken Katti Roll', price: '250', image: '/images/placeholder.jpg' },
     ],
     'Thukpa': [
       { name: 'Veg Thukpa', price: '140', image: '/images/veg thukpa.jpg' },
-      { name: 'Buff Thukpa', price: '180', image: '/images/mixed thukpa.jpg' },
-      { name: 'Chicken Thukpa', price: '200', image: '/images/chichken thukpa.jpg' },
-      { name: 'Mutton Thukpa', price: '250', image: '/images/mutton thukpa.jpg' },
-      { name: 'Mixed Thukpa', price: '300', image: '/images/mixed thukpa.jpg' },
+      { name: 'Buff Thukpa', price: '180', image: '/images/buffthukpa.jpeg' },
+      { name: 'Chicken Thukpa', price: '200', image: '/images/chickenthukpa.jpg' },
+      { name: 'Mutton Thukpa', price: '250', image: '/images/muttonthukpa.jpeg' },
+      { name: 'Mixed Thukpa', price: '300', image: '/images/mixedthukpa.png' },
     ],
     'Pizza': [
       { name: 'Veg Pizza', price: '400', image: '/images/veg pizza.jpg' },
@@ -348,7 +349,7 @@ export default function MenuApp() {
       { name: 'Egg Fried Rice', price: '250', image: '/images/egg fried rice.jpg' },
       { name: 'Buff Fried Rice', price: '300', image: '/images/bufffryrice.jpg' },
       { name: 'Chicken Fried Rice', price: '300', image: '/images/chicken fried rice.jpg' },
-      { name: 'Mixed Fried Rice', price: '350', image: '/images/chinese fried rice.jpg' },
+      { name: 'Mixed Fried Rice', price: '350', image: '/images/mixedrice.jpg' },
     ],
     'Omelette / Egg': [
       { name: 'Plain Omelette', price: '50', image: '/images/plain omlet.webp' },
