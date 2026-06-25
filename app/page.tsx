@@ -15,7 +15,6 @@ export default function MenuApp() {
   const [searchTerm, setSearchTerm] = useState('')
   const [currentTime, setCurrentTime] = useState<string>('')
   const [currentDate, setCurrentDate] = useState<string>('')
-  const [greeting, setGreeting] = useState<string>('')
   const [showPaymentModal, setShowPaymentModal] = useState(false)
   const [selectedAlcohol, setSelectedAlcohol] = useState<null | { name: string; sizes: string[]; image: string }>(null)
   const [categories, setCategories] = useState<string[]>([])
@@ -31,12 +30,6 @@ export default function MenuApp() {
       const options: Intl.DateTimeFormatOptions = { weekday: 'long', month: 'long', day: 'numeric' }
       const dateStr = now.toLocaleDateString('en-US', options)
       setCurrentDate(dateStr)
-
-      const hour = now.getHours()
-      if (hour < 12) setGreeting('Good Morning')
-      else if (hour < 17) setGreeting('Good Afternoon')
-      else if (hour < 21) setGreeting('Good Evening')
-      else setGreeting('Good Night')
     }
 
     updateTime()
@@ -98,12 +91,10 @@ export default function MenuApp() {
       { name: 'Lemon Tea', price: '50', image: '/images/lemon tea.jpg' },
       { name: 'Hot Lemon', price: '50', image: '/images/hot lemon.jpg' },
       { name: 'Hot Lemon with Honey', price: '120', image: '/images/hot lemon with honey.jpg' },
-      { name: 'Milk Coffee', price: '100', image: '/images/milk coffee.jpg' },
+      { name: 'Milk Coffee', price: '100', image: '/images/milkcoffee.jpeg' },
       { name: 'Black Coffee', price: '60', image: '/images/black coffee.jpg' },
       { name: 'Cold Coffee', price: '100', image: '/images/cold coffee.jpg' },
       { name: 'Hot Chocolate', price: '160', image: '/images/hot chocolate.jpg' },
-      { name: 'Steamed Milk', price: '80', image: '/images/steamed milk.jpg' },
-      { name: 'Flavored Steamed Milk', price: '120', image: '/images/flavored steamed milk.jpg' },
     ],
     'Soft Drinks': [
       { name: 'Lemon Soda', price: '60', image: '/images/lemon soda.jpg' },
@@ -154,7 +145,7 @@ export default function MenuApp() {
       { name: 'Veg Momo Fried', price: '130', image: '/images/fry veg momo.jpg' },
       { name: 'Veg Momo Kothey', price: '140', image: '/images/veg momo kothey.jpg' },
       { name: 'Veg Momo Jhol', price: '150', image: '/images/vegmomojhol.jpeg' },
-      { name: 'Veg Momo C', price: '150', image: '/images/vegmomoc.jpeg' },
+      { name: 'Veg Momo C', price: '150', image: '/images/vegchilli.jpeg' },
     ],
     'Chowmein': [
       { name: 'Veg Chowmein', price: '120', image: '/images/veg chowmein.jpeg' },
@@ -246,9 +237,9 @@ export default function MenuApp() {
       { name: 'Arna 300ml', price: '250', image: '/images/arna.jpeg' },
       { name: 'Barahsinghe 300ml / 650ml', price: '300 / 550', image: '/images/barahsinghe.jpeg' },
       { name: 'Carlsberg 300ml / 650ml', price: '350 / 650', image: '/images/carlsberg.jpeg' },
-      { name: '500 Beer 650ml', price: '380', image: '/images/500 beer 650ml.png' },
+      { name: '5000 Beer 650ml', price: '380', image: '/images/5000beer.jpg' },
       { name: 'Tuborg Can Beer', price: '450', image: '/images/tuborg can.jpeg' },
-      { name: 'Gorkha Can Beer', price: '400', image: '/images/5000 beer 650mnl.jpg' },
+      { name: 'Gorkha Can Beer', price: '400', image: '/images/gorkhacan.jpeg' },
     ],
     'Wine': [
       { name: 'Big Master 750ml', price: '1100', image: '/images/big master 750ml.jpg' },
@@ -362,7 +353,7 @@ export default function MenuApp() {
     'Omelette / Egg': [
       { name: 'Plain Omelette', price: '50', image: '/images/plain omlet.webp' },
       { name: 'Masala Omelette', price: '80', image: '/images/masala omlet.jpg' },
-      { name: 'Fry Egg', price: '60', image: '/images/fry omelette.jpg' },
+      { name: 'Sunset Egg', price: '60', image: '/images/sunsetegg.jpeg' },
       { name: 'Poach Egg', price: '70', image: '/images/pouch egg.jpg' },
       { name: 'Boiled Egg', price: '50', image: '/images/boiled egg.jpg' },
     ],
@@ -757,7 +748,6 @@ export default function MenuApp() {
           <div className="text-xs leading-7 text-white/50">
             <p>Open daily for dine-in menu service.</p>
             <p>{currentDate} · {currentTime}</p>
-            <p>{greeting}</p>
           </div>
         </footer>
       </div>
